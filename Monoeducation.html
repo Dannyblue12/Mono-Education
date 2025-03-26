@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mono Education - Educational Consulting</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap">
+<style>
+  /* Base styles and reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #ffffff;
+    padding-top: 80px; /* Added to account for fixed navbar */
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Container */
+  .hero-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Header and Navigation - UPDATED */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(42, 57, 144, 0.15);
+  }
+
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2a3990; /* Mono Education blue */
+    letter-spacing: -0.5px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  .nav-link {
+    font-weight: 600;
+    color: #4b5563;
+    transition: all 0.2s;
+    position: relative;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #2a3990; /* Mono Education blue */
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2a3990;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+
+  .mobile-menu-btn button {
+    padding: 0.5rem;
+    color: #2a3990; /* Mono Education blue */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .cta-button {
+      display: block;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary {
+    background-color: #2a3990; /* Mono Education blue */
+    color: white;
+    box-shadow: 0 4px 14px rgba(42, 57, 144, 0.3);
+  }
+
+  .btn-primary:hover {
+    background-color: #1e2a6b; /* Darker shade of Mono Education blue */
+    box-shadow: 0 6px 20px rgba(42, 57, 144, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 2px solid #2a3990; /* Mono Education blue */
+    color: #2a3990; /* Mono Education blue */
+  }
+
+  .btn-outline:hover {
+    background-color: #f0f4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 57, 144, 0.15);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .mobile-menu-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #2a3990; /* Mono Education blue */
+    cursor: pointer;
+  }
+
+  .mobile-menu-content {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #4b5563;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .mobile-nav-link:hover {
+    color: #2a3990;
+    border-bottom: 1px solid #2a3990;
+  }
+
+  .mobile-cta {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  /* Hero Section */
+  .hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    position: relative;
+  }
+
+  /* Diagonal lines - positioned behind everything */
+  .diagonal-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1; /* Behind everything */
+  }
+
+  .diagonal-line {
+    position: absolute;
+    width: 150%;
+    height: 15px;
+    top: 40%;
+    left: -25%;
+    transform: rotate(-25deg);
+  }
+
+  .line-1 {
+    background-color: #2a3990; /* Mono Education blue */
+    opacity: 0.1;
+  }
+
+  .line-2 {
+    background-color: #3b82f6;
+    top: 45%;
+    height: 10px;
+    opacity: 0.05;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  /* Hero Text Content */
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .subtitle {
+    color: #2a3990; /* Mono Education blue */
+    font-weight: 600;
+    font-size: 1.125rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .subtitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 2px;
+    background-color: #2a3990;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  @media (min-width: 768px) {
+    .title {
+      font-size: 3.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .title {
+      font-size: 4rem;
+    }
+  }
+
+  /* UPDATED: Custom curved arrow underline for "Elevate" - now curves inward */
+  .highlight {
+    color: #2a3990; /* Mono Education blue */
+    position: relative;
+    display: inline-block;
+  }
+
+  .highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 8px;
+    background-color: transparent;
+    z-index: -1;
+    /* Create curved arrow with SVG background - now curves inward */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q40,10 80,5 L95,5 L90,1 M90,5 L95,9' stroke='%232a3990' fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 100%;
+  }
+
+  .description {
+    color: #4b5563;
+    max-width: 32rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .cta-buttons {
+      flex-direction: row;
+    }
+  }
+
+  /* Hero Images - UPDATED for better positioning */
+  .hero-images {
+    position: relative;
+    height: 600px; /* Fixed height for better control */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Circular backgrounds with improved overlapping */
+  .circle-bg {
+    position: absolute;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
+
+  /* Redesigned circle positioning for organic overlap with parts poking out */
+  .circle-1 {
+    width: 550px;
+    height: 550px;
+    background-color: rgba(219, 234, 254, 0.5); /* Lighter blue with opacity */
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .circle-2 {
+    width: 450px;
+    height: 450px;
+    background-color: rgba(224, 242, 254, 0.6); /* Even lighter blue with opacity */
+    top: 30%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .circle-3 {
+    width: 400px;
+    height: 400px;
+    background-color: rgba(186, 230, 253, 0.4); /* Medium light blue with opacity */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+
+  @media (min-width: 640px) {
+    .hero-images {
+      height: 650px;
+    }
+    .circle-1 {
+      width: 500px;
+      height: 500px;
+    }
+    .circle-2 {
+      width: 420px;
+      height: 420px;
+    }
+    .circle-3 {
+      width: 380px;
+      height: 380px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-images {
+      height: 700px;
+    }
+    .circle-1 {
+      width: 600px;
+      height: 600px;
+    }
+    .circle-2 {
+      width: 500px;
+      height: 500px;
+    }
+    .circle-3 {
+      width: 450px;
+      height: 450px;
+    }
+  }
+
+  /* Image - positioned at 30% from top and left as requested */
+  .image {
+    position: absolute;
+    z-index: 20;
+    transition: all 0.5s ease;
+  }
+
+  .image-main {
+    top: 35%;
+    left: 10%;
+    width: 400px;
+    height: auto;
+  }
+
+  @media (min-width: 640px) {
+    .image-main {
+      width: 450px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .image-main {
+      width: 500px;
+    }
+  }
+
+  /* Floating stat cards - Repositioned as requested */
+  .stat-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: white;
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 30;
+    transition: all 0.3s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Repositioned as requested: left side, right side, and bottom right */
+  .card-1 {
+    top: 20%;
+    left: 5%;
+  }
+
+  .card-2 {
+    top: 30%;
+    right: 5%;
+  }
+
+  .card-3 {
+    bottom: 15%;
+    right: 15%;
+  }
+
+  .stat-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #e0f2fe; /* Lighter blue background for icons */
+    border-radius: 50%;
+    color: #2a3990; /* Mono Education blue */
+  }
+
+  .stat-card-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Mobile responsiveness for stat cards */
+  @media (max-width: 768px) {
+    .card-1 {
+      top: 15%;
+      left: 5%;
+    }
+    
+    .card-2 {
+      top: 15%; /* Moved down below card-1 */
+      right: 5%; /* Positioned on the right side */
+      left: auto; /* Remove left positioning */
+    }
+    
+    .card-3 {
+      bottom: 10%;
+      right: 10%;
+    }
+    
+    .stat-card {
+      padding: 0.6rem 1rem;
+    }
+    
+    .stat-card-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    .stat-card-text {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-images {
+      height: 550px;
+    }
+    
+    .circle-1 {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .circle-2 {
+      width: 350px;
+      height: 350px;
+    }
+    
+    .circle-3 {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .image-main {
+      width: 300px;
+    }
+    
+    .card-1 {
+      top: 15%;
+      left: 2%;
+    }
+    
+    .card-2 {
+      top: 30%; /* Moved down below card-1 */
+      right: 2%; /* Positioned on the right side */
+      left: auto; /* Remove left positioning */
+    }
+    
+    .card-3 {
+      bottom: 5%;
+      right: 5%;
+    }
+  }
+
+  /* Animation for circles - updated to match new positioning */
+  @keyframes pulse {
+    0% {
+      transform: scale(1) translate(-50%, -50%);
+    }
+    50% {
+      transform: scale(1.05) translate(-50%, -50%);
+    }
+    100% {
+      transform: scale(1) translate(-50%, -50%);
+    }
+  }
+
+  .circle-1 {
+    animation: pulse 8s infinite ease-in-out;
+    transform-origin: center center;
+  }
+
+  /* Custom animations for other circles */
+  @keyframes pulse2 {
+    0% {
+      transform: scale(1) translate(-50%, -50%);
+    }
+    50% {
+      transform: scale(1.05) translate(-50%, -50%);
+    }
+    100% {
+      transform: scale(1) translate(-50%, -50%);
+    }
+  }
+
+  .circle-2 {
+    animation: pulse2 12s infinite ease-in-out;
+    transform-origin: center center;
+  }
+
+  @keyframes pulse3 {
+    0% {
+      transform: scale(1) translate(-50%, -50%);
+    }
+    50% {
+      transform: scale(1.05) translate(-50%, -50%);
+    }
+    100% {
+      transform: scale(1) translate(-50%, -50%);
+    }
+  }
+
+  .circle-3 {
+    animation: pulse3 10s infinite ease-in-out;
+    transform-origin: center center;
+  }
+
+  /* Marquee Section - Positioned directly after hero section */
+  .marquee-section {
+    background-color: transparent;
+    padding: 2rem 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(42, 57, 144, 0.1);
+    margin-top: 0; /* Ensure it's directly below the hero */
+  }
+
+  .marquee-container {
+    display: flex;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    margin: 0 2rem;
+  }
+
+  /* Updated marquee text styling */
+  .marquee-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #6b7280; /* Gray text as requested */
+    letter-spacing: -0.02em;
+    font-family: 'Playfair Display', serif; /* More distinctive font */
+  }
+
+  .marquee-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #2a3990;
+    border-radius: 50%;
+    margin: 0 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .marquee-text {
+      font-size: 1.25rem;
+    }
+    .marquee-dot {
+      margin: 0 1.5rem;
+    }
+  }
+
+  /* Services Section - UPDATED */
+  .services-section {
+    padding: 5rem 2rem;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #2a3990;
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+  }
+
+  /* Services Grid - UPDATED */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Service Card - UPDATED */
+  .service-card {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-image {
+    height: 160px; /* UPDATED: More moderate height */
+    background-color: #f1f5f9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* NEW: Line below image */
+  .service-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #2a3990;
+    opacity: 0.7;
+  }
+
+  .service-image-placeholder {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .service-image-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #2a3990;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .service-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background-color: #2a3990;
+  }
+
+  .service-description {
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .service-link {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: #2a3990;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+  }
+
+  .service-link:hover {
+    color: #1e2a6b;
+  }
+
+  .service-link-icon {
+    margin-left: 0.5rem;
+    transition: transform 0.2s;
+  }
+
+  .service-link:hover .service-link-icon {
+    transform: translateX(3px);
+  }
+
+  /* Service card hover effect */
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(42, 57, 144, 0.03);
+    transition: height 0.3s ease;
+    z-index: 0;
+  }
+
+  .service-card:hover::before {
+    height: 100%;
+  }
+
+  /* Decorative elements */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 4px;
+    background-color: #2a3990;
+    transition: width 0.3s ease;
+  }
+
+  .service-card:hover::after {
+    width: 100%;
+  }
+
+  /* See More Button */
+  .see-more-container {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* Why We Are the Best Section - UPDATED */
+  .why-best-section {
+    padding: 5rem 2rem;
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-best-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Features Grid - UPDATED */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Feature Card - UPDATED */
+  .feature-card {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid #2a3990;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  /* UPDATED: Larger feature icons */
+  .feature-icon {
+    width: 5rem;
+    height: 5rem;
+    background-color: rgba(42, 57, 144, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: #2a3990;
+  }
+
+  .feature-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+
+  .feature-description {
+    color: #64748b;
+    line-height: 1.7;
+    flex-grow: 1;
+  }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(42, 57, 144, 0.03);
+    border-radius: 50%;
+    transform: translate(30%, 30%);
+    z-index: 0;
+  }
+
+  .feature-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Who We Are Section - NEW */
+  .who-we-are-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .who-we-are-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .who-we-are-container {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .who-we-are-image {
+    position: relative;
+    height: 400px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .who-we-are-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .who-we-are-image-icon {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .who-we-are-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .who-we-are-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 1.125rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .who-we-are-subtitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .who-we-are-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: white;
+  }
+
+  .who-we-are-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  .who-we-are-highlight {
+    font-weight: 700;
+    color: white;
+  }
+
+  /* Decorative elements for Who We Are section */
+  .who-we-are-decoration {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+  }
+
+  .decoration-1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    left: -150px;
+  }
+
+  .decoration-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: 10%;
+  }
+
+  .decoration-3 {
+    width: 150px;
+    height: 150px;
+    top: 20%;
+    right: -75px;
+  }
+
+  /* Start Your Journey Section - NEW */
+  .start-journey-section {
+    padding: 6rem 2rem;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .start-journey-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .start-journey-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .start-journey-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.2;
+  }
+
+  .start-journey-description {
+    font-size: 1.25rem;
+    color: #64748b;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .start-journey-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .start-journey-steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .journey-step {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .journey-step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-number {
+    width: 3rem;
+    height: 3rem;
+    background-color: #2a3990;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+
+  .step-description {
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .start-journey-cta {
+    margin-top: 2rem;
+  }
+
+  .btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* Get in Touch Section - NEW */
+  .contact-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-container {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.2;
+  }
+
+  .contact-description {
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.7;
+    max-width: 500px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(42, 57, 144, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2a3990;
+  }
+
+  .contact-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .contact-text {
+    font-size: 1.125rem;
+    color: #4b5563;
+  }
+
+  .contact-form {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #2a3990;
+    box-shadow: 0 0 0 3px rgba(42, 57, 144, 0.1);
+  }
+
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s;
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .form-textarea:focus {
+    outline: none;
+    border-color: #2a3990;
+    box-shadow: 0 0 0 3px rgba(42, 57, 144, 0.1);
+  }
+
+  .form-submit {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  /* Footer - NEW */
+  .footer {
+    background-color: #1e293b;
+    color: white;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-top {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .footer-logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .footer-about {
+    color: #cbd5e1;
+    line-height: 1.7;
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s;
+  }
+
+  .social-icon:hover {
+    background-color: #2a3990;
+    transform: translateY(-3px);
+  }
+
+  .social-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .footer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-link {
+    color: #cbd5e1;
+    transition: all 0.2s;
+  }
+
+  .footer-link:hover {
+    color: white;
+    transform: translateX(3px);
+  }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: #cbd5e1;
+  }
+
+  .footer-contact-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #2a3990;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.875rem;
+  }
+
+  .service-image img, .who-we-are-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+<!-- Fixed Navigation Bar -->
+<header class="header">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+      <a href="/">Mono Education</a>
+    </div>
+    
+    <div class="desktop-nav">
+      <a href="/about-us" class="nav-link">ABOUT US</a>
+      <a href="/services" class="nav-link">OUR SERVICES</a>
+      <a href="/focus" class="nav-link">OUR FOCUS</a>
+      <a href="/work-with-us" class="nav-link">WORK WITH US</a>
+      <a href="/impacts" class="nav-link">OUR IMPACTS</a>
+      <a href="/contact" class="nav-link">CONTACT US</a>
+    </div>
+    
+    <div class="mobile-menu-btn">
+      <button id="menu-toggle">
+        <span class="menu-icon">☰</span>
+      </button>
+    </div>
+    
+    <div class="cta-button">
+      <a href="/get-started" class="btn btn-primary">Get Started</a>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+        <a href="/">Mono Education</a>
+      </div>
+      <button id="close-menu">✕</button>
+    </div>
+    <div class="mobile-menu-content">
+      <a href="/about-us" class="mobile-nav-link">ABOUT US</a>
+      <a href="/services" class="mobile-nav-link">OUR SERVICES</a>
+      <a href="/focus" class="mobile-nav-link">OUR FOCUS</a>
+      <a href="/work-with-us" class="mobile-nav-link">WORK WITH US</a>
+      <a href="/impacts" class="mobile-nav-link">OUR IMPACTS</a>
+      <a href="/contact" class="mobile-nav-link">CONTACT US</a>
+      <a href="/get-started" class="btn btn-primary mobile-cta">Get Started</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-container">
+  <!-- Diagonal lines in background - now behind everything with z-index: -1 -->
+  <div class="diagonal-lines">
+    <div class="diagonal-line line-1"></div>
+    <div class="diagonal-line line-2"></div>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <!-- Left side - Text content -->
+      <div class="hero-text">
+        <p class="subtitle">Expert Educational Guidance</p>
+        <h1 class="title">
+          <span class="highlight">Elevate</span> Your <br>
+          Academic Future
+        </h1>
+        <p class="description">
+          We provide personalized educational consulting to help you achieve your academic goals and unlock your
+          full potential. Our expert team guides you every step of the way.
+        </p>
+        
+        <!-- Call to action buttons -->
+        <div class="cta-buttons">
+          <a href="/start" class="btn btn-primary">Start Your Journey</a>
+          <a href="/learn-more" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+      
+      <!-- Right side - Overlapping circles with centered student image -->
+      <div class="hero-images">
+        <!-- Overlapping circular backgrounds - REDESIGNED for proper overlap -->
+        <div class="circle-bg circle-1"></div>
+        <div class="circle-bg circle-2"></div>
+        <div class="circle-bg circle-3"></div>
+        
+        <!-- Centered and larger student image -->
+        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/1000140583-removebg-preview-MPBkJ79EmV1hfMmp31VMOgXCjMoTxg.png" alt="Student with laptop" class="image image-main">
+        
+        <!-- Floating stat cards - REPOSITIONED as requested -->
+        <div class="stat-card card-1">
+          <div class="stat-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <p class="stat-card-text">15+ Years Experience</p>
+        </div>
+
+        <div class="stat-card card-2">
+          <div class="stat-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <p class="stat-card-text">98% Success Rate</p>
+        </div>
+
+        <div class="stat-card card-3">
+          <div class="stat-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <p class="stat-card-text">Best Education Consultancy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Marquee Section - Now positioned directly after the hero section -->
+  <section class="marquee-section">
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <div class="marquee-item">
+          <span class="marquee-text">15+ Years of Experience</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">Expert Guidance and Help</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">98% Success Rate</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">200+ Expert Tutors</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">Best Education Consultancy</span>
+          <span class="marquee-dot"></span>
+        </div>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <div class="marquee-item">
+          <span class="marquee-text">15+ Years of Experience</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">Expert Guidance and Help</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">98% Success Rate</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">200+ Expert Tutors</span>
+          <span class="marquee-dot"></span>
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-text">Best Education Consultancy</span>
+          <span class="marquee-dot"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Services We Offer Section - UPDATED to show only 4 services -->
+<section class="services-section">
+  <div class="services-container">
+    <div class="section-header">
+      <h2 class="section-title">Services We Offer</h2>
+      <p class="section-subtitle">Discover our comprehensive range of educational services designed to transform learning experiences and empower educational institutions.</p>
+    </div>
+    
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/group-young-people-sitting-conference-together-3Xk7vjRa6HRD1NJiCghV5hg7n8wL0Q.jpg?height=160&width=400" alt="Teacher Training & Professional Development" class="w-full h-full object-cover" />
+        </div>
+        <div class="service-content">
+          <h3 class="service-title">Teacher Training & Professional Development</h3>
+          <p class="service-description">
+            Comprehensive training programs designed to enhance teaching skills, implement modern pedagogical approaches, and stay updated with the latest educational trends and technologies.
+          </p>
+          <a href="/services/teacher-training" class="service-link">
+            Learn More
+            <svg class="service-link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Service 2 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1440718884-612x612-GqxAbLq0BjhPtz9QNQubVWbvSJM4Vl.jpg?height=160&width=400" alt="Educational Consulting for Schools & Institutions" class="w-full h-full object-cover" />
+        </div>
+        <div class="service-content">
+          <h3 class="service-title">Educational Consulting for Schools & Institutions</h3>
+          <p class="service-description">
+            Strategic guidance for educational institutions to optimize curriculum design, improve teaching methodologies, enhance administrative processes, and achieve accreditation standards.
+          </p>
+          <a href="/services/educational-consulting" class="service-link">
+            Learn More
+            <svg class="service-link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Service 3 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1262251920-612x612-s3tZ7X7GsHbCXIw3oIYHs973cLCxvg.jpg?height=160&width=400" alt="Learning Management System (LMS) Development" class="w-full h-full object-cover" />
+        </div>
+        <div class="service-content">
+          <h3 class="service-title">Learning Management System (LMS) Development</h3>
+          <p class="service-description">
+            Custom LMS solutions that streamline educational content delivery, track student progress, facilitate communication between educators and learners, and integrate with existing systems.
+          </p>
+          <a href="/services/lms-development" class="service-link">
+            Learn More
+            <svg class="service-link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Service 4 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-638059282-612x612-enj09rb2mxGDEKV85iB6Gkz6WVmQdU.jpg?height=160&width=400" alt="Research & Educational Publications" class="w-full h-full object-cover" />
+        </div>
+        <div class="service-content">
+          <h3 class="service-title">Research & Educational Publications</h3>
+          <p class="service-description">
+            Conducting and publishing educational research to advance teaching methodologies, learning theories, and educational technology implementation, providing evidence-based insights for educators.
+          </p>
+          <a href="/services/research-publications" class="service-link">
+            Learn More
+            <svg class="service-link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- See More Button -->
+    <div class="see-more-container">
+      <a href="/services" class="btn btn-primary">See More Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why We Are the Best Section -->
+<section class="why-best-section">
+  <div class="why-best-container">
+    <div class="section-header">
+      <h2 class="section-title">Why We Are the Best</h2>
+      <p class="section-subtitle">Discover what sets Mono Education apart and why thousands of students trust us with their academic journey.</p>
+    </div>
+    
+    <div class="features-grid">
+      <!-- Our Vision -->
+      <div class="feature-card">
+        <div class="feature-content">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="feature-title">Our Vision</h3>
+          <p class="feature-description">
+          As a consulting firm, our vision is to be the first point of call for online/offline education and leadership training, publication, consulting and research in the world of education.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Our Mission -->
+      <div class="feature-card">
+        <div class="feature-content">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-title">Our Mission</h3>
+          <p class="feature-description">
+            Our mission is to offer demand-driven, top-quality modular management and leadership training, consulting, and research services in the world of education. 
+          </p>
+        </div>
+      </div>
+      
+      <!-- What We Offer -->
+      <div class="feature-card">
+        <div class="feature-content">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">What We Offer</h3>
+          <p class="feature-description">
+            Mono Education also offers trainings, recruitment and consulting. Our staff uses cutting-edge technology and has over ten years of expertise to satisfy the unique needs of every learner and project delivery. We follow a systematic process and provide our clients with knowledgeable guidance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who We Are Section - NEW -->
+<section class="who-we-are-section">
+  <!-- Decorative elements -->
+  <div class="who-we-are-decoration decoration-1"></div>
+  <div class="who-we-are-decoration decoration-2"></div>
+  <div class="who-we-are-decoration decoration-3"></div>
+  
+  <div class="who-we-are-container">
+    <!-- Left side - Image -->
+    <div class="who-we-are-image">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/group-young-people-sitting-conference-together-3Xk7vjRa6HRD1NJiCghV5hg7n8wL0Q.jpg?height=400&width=500" alt="Mono Education Company" class="w-full h-full object-cover rounded-lg" />
+    </div>
+    
+    <!-- Right side - Content -->
+    <div class="who-we-are-content">
+      <p class="who-we-are-subtitle">About Us</p>
+      <h2 class="who-we-are-title">Who We Are</h2>
+      <p class="who-we-are-description">
+        <span class="who-we-are-highlight">Mono Education Ltd</span> is a consulting company that is a leading provider of online education services. We are committed to training teachers, students, and mentors by providing cutting-edge and creative educational materials and solutions to assist learners of all ages in realizing their full potential.
+      </p>
+      <p class="who-we-are-description">
+        We understand that each learner is different and needs specialized solutions. With the help of our cutting-edge educational initiatives, we provide learners with the chance to advance their knowledge and expertise in their specialized fields and stay one step ahead of the competition.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Start Your Journey Section - NEW -->
+<section class="start-journey-section">
+  <div class="start-journey-container">
+    <div class="start-journey-content">
+      <h2 class="start-journey-title">Start Your Journey</h2>
+      <p class="start-journey-description">
+        Begin your educational transformation with Mono Education. Our simple process ensures you get the guidance and support you need to achieve your academic goals.
+      </p>
+      
+      <div class="start-journey-steps">
+        <!-- Step 1 -->
+        <div class="journey-step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Initial Consultation</h3>
+          <p class="step-description">
+            Schedule a free consultation with our education experts to discuss your goals, challenges, and aspirations.
+          </p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="journey-step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Personalized Plan</h3>
+          <p class="step-description">
+            Receive a customized educational plan tailored to your specific needs, learning style, and objectives.
+          </p>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="journey-step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Begin Learning</h3>
+          <p class="step-description">
+            Start your educational journey with ongoing support, resources, and guidance from our expert team.
+          </p>
+        </div>
+      </div>
+      
+      <div class="start-journey-cta">
+        <a href="/get-started" class="btn btn-primary btn-large">Get Started Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Get in Touch Section - NEW -->
+<section class="contact-section">
+  <div class="contact-container">
+    <!-- Left side - Content -->
+    <div class="contact-content">
+      <h2 class="contact-title">Get in Touch</h2>
+      <p class="contact-description">
+        Have questions or ready to start your educational journey? Reach out to our team of experts who are ready to assist you with any inquiries.
+      </p>
+      
+      <div class="contact-info">
+        <!-- Phone -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <p class="contact-text">+1 (234) 567-8900</p>
+        </div>
+        
+        <!-- Email -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <p class="contact-text">info@monoeducation.com</p>
+        </div>
+        
+        <!-- Location -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <p class="contact-text">123 Education Street, Learning City, ED 12345</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right side - Form -->
+    <div class="contact-form">
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="form-input" placeholder="Your phone number">
+        </div>
+        
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject</label>
+          <input type="text" id="subject" name="subject" class="form-input" placeholder="How can we help you?">
+        </div>
+        
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Your message" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <!-- Company Info -->
+      <div class="footer-company">
+        <div class="footer-logo">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+          <span class="footer-logo-text">Mono Education</span>
+        </div>
+        <p class="footer-about">
+          Leading provider of educational consulting services, committed to helping students and educators achieve their full potential.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Quick Links -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">Quick Links</h3>
+        <div class="footer-links">
+          <a href="/" class="footer-link">Home</a>
+          <a href="/about-us" class="footer-link">About Us</a>
+          <a href="/services" class="footer-link">Services</a>
+          <a href="/focus" class="footer-link">Our Focus</a>
+          <a href="/impacts" class="footer-link">Our Impacts</a>
+        </div>
+      </div>
+      
+      <!-- Services -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">Services</h3>
+        <div class="footer-links">
+          <a href="/services/teacher-training" class="footer-link">Teacher Training</a>
+          <a href="/services/educational-consulting" class="footer-link">Educational Consulting</a>
+          <a href="/services/lms-development" class="footer-link">LMS Development</a>
+          <a href="/services/research-publications" class="footer-link">Research & Publications</a>
+        </div>
+      </div>
+      
+      <!-- Contact -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">Contact Us</h3>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>123 Education Street, Learning City, ED 12345</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>info@monoeducation.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>+1 (234) 567-8900</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Mono Education Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Mobile menu functionality
+    const menuToggle = document.getElementById("menu-toggle");
+    const closeMenu = document.getElementById("close-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.add("active");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+    });
+
+    // Animation for elements on page load
+    function animateElement(element, delay) {
+      setTimeout(() => {
+        element.style.opacity = "1";
+        element.style.transform = element.dataset.finalTransform || "translateY(0)";
+      }, delay);
+    }
+
+    // Set initial styles for animations
+    const heroText = document.querySelector(".hero-text");
+    const heroImages = document.querySelector(".hero-images");
+    const navbar = document.querySelector(".navbar");
+    const statCards = document.querySelectorAll(".stat-card");
+    const images = document.querySelectorAll(".image");
+    const circles = document.querySelectorAll(".circle-bg");
+    const serviceCards = document.querySelectorAll(".service-card");
+    const featureCards = document.querySelectorAll(".feature-card");
+    const whoWeAreContent = document.querySelector(".who-we-are-content");
+    const whoWeAreImage = document.querySelector(".who-we-are-image");
+    const journeySteps = document.querySelectorAll(".journey-step");
+    const contactContent = document.querySelector(".contact-content");
+    const contactForm = document.querySelector(".contact-form");
+
+    heroText.style.opacity = "0";
+    heroText.style.transform = "translateY(20px)";
+    heroText.style.transition = "opacity 0.8s, transform 0.8s";
+
+    heroImages.style.opacity = "0";
+    heroImages.style.transition = "opacity 1.2s";
+
+    navbar.style.opacity = "0";
+    navbar.style.transform = "translateY(-20px)";
+    navbar.style.transition = "opacity 0.5s, transform 0.5s";
+
+    statCards.forEach((card) => {
+      card.style.opacity = "0";
+      card.style.transition = "opacity 0.8s, transform 0.8s";
+
+      if (card.classList.contains("card-1")) {
+        card.style.transform = "translateY(-30px)";
+        card.dataset.finalTransform = "translateY(0)";
+      } else if (card.classList.contains("card-2")) {
+        card.style.transform = "translateX(30px)";
+        card.dataset.finalTransform = "translateX(0)";
+      } else {
+        card.style.transform = "translateY(-30px)";
+        card.dataset.finalTransform = "translateY(0)";
+      }
+    });
+
+    images.forEach((img) => {
+      img.style.opacity = "0";
+      img.style.transform = "translateY(30px)";
+      img.style.transition = "opacity 1s, transform 1s";
+    });
+
+    circles.forEach((circle, index) => {
+      circle.style.opacity = "0";
+      circle.style.transform = "scale(0.8) translate(-50%, -50%)";
+      circle.style.transition = "opacity 1s, transform 1s";
+    });
+    
+    serviceCards.forEach((card, index) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px)";
+      card.style.transition = "opacity 0.8s, transform 0.8s";
+    });
+    
+    featureCards.forEach((card, index) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px)";
+      card.style.transition = "opacity 0.8s, transform 0.8s";
+    });
+    
+    if (whoWeAreContent) {
+      whoWeAreContent.style.opacity = "0";
+      whoWeAreContent.style.transform = "translateX(30px)";
+      whoWeAreContent.style.transition = "opacity 0.8s, transform 0.8s";
+    }
+    
+    if (whoWeAreImage) {
+      whoWeAreImage.style.opacity = "0";
+      whoWeAreImage.style.transform = "translateX(-30px)";
+      whoWeAreImage.style.transition = "opacity 0.8s, transform 0.8s";
+    }
+    
+    if (journeySteps) {
+      journeySteps.forEach((step, index) => {
+        step.style.opacity = "0";
+        step.style.transform = "translateY(30px)";
+        step.style.transition = "opacity 0.8s, transform 0.8s";
+      });
+    }
+    
+    if (contactContent) {
+      contactContent.style.opacity = "0";
+      contactContent.style.transform = "translateX(-30px)";
+      contactContent.style.transition = "opacity 0.8s, transform 0.8s";
+    }
+    
+    if (contactForm) {
+      contactForm.style.opacity = "0";
+      contactForm.style.transform = "translateX(30px)";
+      contactForm.style.transition = "opacity 0.8s, transform 0.8s";
+    }
+
+    // Trigger animations
+    animateElement(navbar, 200);
+    animateElement(heroText, 400);
+    
+    circles.forEach((circle, index) => {
+      animateElement(circle, 600 + index * 150);
+    });
+    
+    animateElement(heroImages, 800);
+    
+    images.forEach((img) => {
+      animateElement(img, 1000);
+    });
+
+    statCards.forEach((card, index) => {
+      animateElement(card, 1200 + index * 200);
+    });
+    
+    serviceCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 1500 + index * 200);
+    });
+    
+    featureCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 2000 + index * 200);
+    });
+    
+    if (whoWeAreContent) {
+      setTimeout(() => {
+        whoWeAreContent.style.opacity = "1";
+        whoWeAreContent.style.transform = "translateX(0)";
+      }, 2200);
+    }
+    
+    if (whoWeAreImage) {
+      setTimeout(() => {
+        whoWeAreImage.style.opacity = "1";
+        whoWeAreImage.style.transform = "translateX(0)";
+      }, 2400);
+    }
+    
+    if (journeySteps) {
+      journeySteps.forEach((step, index) => {
+        setTimeout(() => {
+          step.style.opacity = "1";
+          step.style.transform = "translateY(0)";
+        }, 2600 + index * 200);
+      });
+    }
+    
+    if (contactContent) {
+      setTimeout(() => {
+        contactContent.style.opacity = "1";
+        contactContent.style.transform = "translateX(0)";
+      }, 3000);
+    }
+    
+    if (contactForm) {
+      setTimeout(() => {
+        contactForm.style.opacity = "1";
+        contactForm.style.transform = "translateX(0)";
+      }, 3200);
+    }
+
+    // Responsive image sizing based on window width
+    function adjustImageSizes() {
+      const windowWidth = window.innerWidth;
+
+      // Adjust image sizes based on screen width
+      if (windowWidth < 640) {
+        // Mobile
+        document.querySelector(".image-main").style.width = "450px";
+      } else if (windowWidth < 1024) {
+        // Tablet
+        document.querySelector(".image-main").style.width = "500px";
+      } else {
+        // Desktop
+        document.querySelector(".image-main").style.width = "550px";
+      }
+    }
+
+    // Initial adjustment
+    adjustImageSizes();
+
+    // Adjust on window resize
+    window.addEventListener("resize", adjustImageSizes);
+  });
+</script>
+</body>
+</html>
+
