@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services - Mono Education</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Base styles and reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Header and Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(42, 57, 144, 0.15);
+}
+
+.logo a {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2a3990; /* Mono Education blue */
+  letter-spacing: -0.5px;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.nav-link {
+  font-weight: 600;
+  color: #4b5563;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #2a3990; /* Mono Education blue */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2a3990;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.mobile-menu-btn button {
+  padding: 0.5rem;
+  color: #2a3990; /* Mono Education blue */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2a3990; /* Mono Education blue */
+  cursor: pointer;
+}
+
+.mobile-menu-content {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.mobile-nav-link:hover {
+  color: #2a3990;
+  border-bottom: 1px solid #2a3990;
+}
+
+/* Services Hero Section */
+.services-hero {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  margin-top: 60px; /* Space for fixed navbar */
+  overflow: hidden;
+}
+
+.services-hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+}
+
+.services-hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.services-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+}
+
+.services-hero-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Services Section */
+.services-section {
+  padding: 5rem 2rem;
+  background-color: #ffffff;
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  color: #2a3990;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid #2a3990;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.service-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: #2a3990;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+}
+
+.service-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.service-content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.service-list {
+  list-style-type: none;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.service-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.service-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2a3990;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: auto;
+  border: none;
+  cursor: pointer;
+}
+
+.service-button:hover {
+  background-color: #1a1f4e;
+  transform: translateY(-3px);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  animation: modalFadeIn 0.3s;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-modal:hover {
+  color: #2a3990;
+}
+
+.modal-body {
+  margin-top: 1rem;
+}
+
+.modal-service-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.modal-service-image {
+  height: 250px;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.modal-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-service-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2a3990;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.modal-service-content p {
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: white;
+  color: #2a3990;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  background-color: #1e293b;
+  color: white;
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footer-top {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.footer-about {
+  color: #cbd5e1;
+  line-height: 1.7;
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #2a3990;
+  transform: translateY(-3px);
+}
+
+.social-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  color: #cbd5e1;
+  transition: all 0.2s;
+}
+
+.footer-link:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+.footer-contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #2a3990;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Animation Styles */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+</style>
+</head>
+<body>
+<!-- Fixed Navigation Bar -->
+<header class="header">
+<nav class="navbar">
+  <div class="logo">
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+    <a href="/">Mono Education</a>
+  </div>
+  
+  <div class="desktop-nav">
+    <a href="/about-us" class="nav-link">ABOUT US</a>
+    <a href="/services" class="nav-link active">OUR SERVICES</a>
+    <a href="/blogs" class="nav-link">BLOGS</a>
+    <a href="/join-team" class="nav-link">JOIN OUR TEAM</a>
+    <a href="/contact" class="nav-link">CONTACT US</a>
+  </div>
+  
+  <div class="mobile-menu-btn">
+    <button id="menu-toggle">
+      <span class="menu-icon">☰</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="logo">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+      <a href="/">Mono Education</a>
+    </div>
+    <button id="close-menu">✕</button>
+  </div>
+  <div class="mobile-menu-content">
+    <a href="/about-us" class="mobile-nav-link">ABOUT US</a>
+    <a href="/services" class="mobile-nav-link">OUR SERVICES</a>
+    <a href="/blogs" class="mobile-nav-link">BLOGS</a>
+    <a href="/join-team" class="mobile-nav-link">JOIN OUR TEAM</a>
+    <a href="/contact" class="mobile-nav-link">CONTACT US</a>
+  </div>
+</div>
+</header>
+
+<div class="container">
+  <!-- Services Hero Section -->
+  <section class="services-hero">
+    <div class="services-hero-pattern"></div>
+    <div class="services-hero-content animate-on-scroll">
+      <h1 class="services-hero-title">Our Services</h1>
+      <p class="services-hero-subtitle">Transforming education through innovation, research, and technology</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="services-container">
+      <div class="services-header animate-on-scroll">
+        <p class="section-subtitle">What We Offer</p>
+        <h2 class="section-title">Mono Education Ltd – Key Services</h2>
+        <p class="section-description">We offer comprehensive educational solutions designed to meet the evolving needs of institutions, educators, and learners in the digital age.</p>
+      </div>
+      
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card animate-on-scroll delay-100">
+          <div class="service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/group-young-people-sitting-conference-together-3Xk7vjRa6HRD1NJiCghV5hg7n8wL0Q.jpg" alt="Digital Learning Solutions" class="w-full h-full object-cover">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Digital Learning Solutions & EdTech Development</h3>
+            <ul class="service-list">
+              <li>Learning Management Systems (LMS)</li>
+              <li>AI in Education</li>
+              <li>EdTech Solutions & Digital Transformation</li>
+              <li>E-Library & Digital Resource Development</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card animate-on-scroll delay-200">
+          <div class="service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1440718884-612x612-GqxAbLq0BjhPtz9QNQubVWbvSJM4Vl.jpg" alt="Research and Policy Development" class="w-full h-full object-cover">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Research, Policy, & Curriculum Development</h3>
+            <ul class="service-list">
+              <li>Research & Design</li>
+              <li>Educational Policy & Curriculum Development</li>
+              <li>Education Monitoring, Evaluation & Impact Assessment</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card animate-on-scroll delay-300">
+          <div class="service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1262251920-612x612-s3tZ7X7GsHbCXIw3oIYHs973cLCxvg.jpg" alt="Education and Skills Training" class="w-full h-full object-cover">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Education & Skills Training</h3>
+            <ul class="service-list">
+              <li>Education & Training Programs (Digital Literacy, AI, 21st-Century Skills)</li>
+              <li>TVET & Workforce Development</li>
+              <li>STEM & Innovation Programs</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card animate-on-scroll delay-100">
+          <div class="service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-638059282-612x612-enj09rb2mxGDEKV85iB6Gkz6WVmQdU.jpg" alt="Consulting and Institutional Development" class="w-full h-full object-cover">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Consulting & Institutional Development</h3>
+            <ul class="service-list">
+              <li>Educational Consulting & Institutional Development</li>
+              <li>Sustainable Development & Education for SDGs</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card animate-on-scroll delay-200">
+          <div class="service-image">
+            <img src="/placeholder.svg?height=200&width=400" alt="Publishing and Grant Writing Services" class="w-full h  alt="Publishing and Grant Writing Services" class="w-full h-full object-cover">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Publishing & Grant Writing Services</h3>
+            <ul class="service-list">
+              <li>Publication Services (Journals, Books, Policy Briefs)</li>
+              <li>Scholarship & Grant Writing Services</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card animate-on-scroll delay-300">
+          <div class="service-image">
+            <img src="/placeholder.svg?height=200&width=400" alt="Conferences and Global Partnerships" class="w-full h-full object-cover">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Conferences & Global Partnerships</h3>
+            <ul class="service-list">
+              <li>Conference Planning & Hosting</li>
+              <li>Educational Partnerships & International Collaboration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Details Modal -->
+  <div class="modal" id="serviceModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-pattern"></div>
+    <div class="cta-container animate-on-scroll">
+      <h2 class="cta-title">Ready to Transform Your Educational Approach?</h2>
+      <p class="cta-description">Contact us today to discuss how Mono Education can help you achieve your goals.</p>
+      <a href="/contact" class="cta-button">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <!-- Company Info -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+            <span class="footer-logo-text">Mono Education</span>
+          </div>
+          <p class="footer-about">
+            Leading provider of educational consulting services, committed to helping students and educators achieve their full potential.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-links-column">
+          <h3 class="footer-title">Quick Links</h3>
+          <div class="footer-links">
+            <a href="/" class="footer-link">Home</a>
+            <a href="/about-us" class="footer-link">About Us</a>
+            <a href="/services" class="footer-link">Services</a>
+            <a href="/blogs" class="footer-link">Blogs</a>
+            <a href="/join-team" class="footer-link">Join Our Team</a>
+          </div>
+        </div>
+        
+        <!-- Services -->
+        <div class="footer-links-column">
+          <h3 class="footer-title">Services</h3>
+          <div class="footer-links">
+            <a href="/services/teacher-training" class="footer-link">Teacher Training</a>
+            <a href="/services/educational-consulting" class="footer-link">Educational Consulting</a>
+            <a href="/services/lms-development" class="footer-link">LMS Development</a>
+            <a href="/services/research-publications" class="footer-link">Research & Publications</a>
+          </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-links-column">
+          <h3 class="footer-title">Contact Us</h3>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Mono Education, Office No.2, Sanitation Street, 
+    Bajabure Federal Housing Estate, Adamawa State , Nigeria.</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@monoeducation.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>+234802875060</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Mono Education Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile menu functionality
+  const menuToggle = document.getElementById("menu-toggle");
+  const closeMenu = document.getElementById("close-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+  });
+
+  // Modal functionality
+  const modal = document.getElementById("serviceModal");
+  const closeModal = document.querySelector(".close-modal");
+  const serviceButtons = document.querySelectorAll(".service-button");
+  const modalBody = document.querySelector(".modal-body");
+  
+  // Service details content
+  const serviceDetails = {
+    'digital-learning': {
+      title: 'Digital Learning Solutions & EdTech Development',
+      content: `
+        <div class="modal-service-content">
+          <h2>Digital Learning Solutions & EdTech Development</h2>
+          <div class="modal-service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/group-young-people-sitting-conference-together-3Xk7vjRa6HRD1NJiCghV5hg7n8wL0Q.jpg" alt="Digital Learning Solutions" class="w-full h-full object-cover">
+          </div>
+          <p>At Mono Education, we specialize in creating cutting-edge digital learning solutions that transform the educational experience. Our team of experts combines pedagogical knowledge with technological expertise to develop customized solutions that meet the unique needs of educational institutions.</p>
+          
+          <h3>Learning Management Systems (LMS)</h3>
+          <p>We design and implement comprehensive Learning Management Systems that facilitate seamless content delivery, student engagement, and performance tracking. Our LMS solutions are customizable, user-friendly, and equipped with features that enhance the teaching and learning experience.</p>
+          
+          <h3>AI in Education</h3>
+          <p>We harness the power of Artificial Intelligence to create personalized learning experiences, automate administrative tasks, and provide data-driven insights. Our AI solutions help educators identify learning gaps, adapt teaching strategies, and improve student outcomes.</p>
+          
+          <h3>EdTech Solutions & Digital Transformation</h3>
+          <p>We guide educational institutions through their digital transformation journey, helping them adopt and integrate technology effectively. Our EdTech solutions are designed to enhance teaching methodologies, improve administrative efficiency, and create engaging learning environments.</p>
+          
+          <h3>E-Library & Digital Resource Development</h3>
+          <p>We develop comprehensive digital libraries and resources that provide students and educators with access to a wealth of information. Our e-library solutions include features like advanced search capabilities, annotation tools, and collaborative spaces.</p>
+        </div>
+      `
+    },
+    'research-policy': {
+      title: 'Research, Policy, & Curriculum Development',
+      content: `
+        <div class="modal-service-content">
+          <h2>Research, Policy, & Curriculum Development</h2>
+          <div class="modal-service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1440718884-612x612-GqxAbLq0BjhPtz9QNQubVWbvSJM4Vl.jpg" alt="Research and Policy Development" class="w-full h-full object-cover">
+          </div>
+          <p>Mono Education is committed to advancing educational practices through rigorous research, thoughtful policy development, and innovative curriculum design. Our team of researchers and education specialists works closely with institutions to create evidence-based solutions that drive positive change.</p>
+          
+          <h3>Research & Design</h3>
+          <p>We conduct comprehensive research on educational trends, methodologies, and technologies to inform our solutions and services. Our research approach combines qualitative and quantitative methods to provide a holistic understanding of educational challenges and opportunities.</p>
+          
+          <h3>Educational Policy & Curriculum Development</h3>
+          <p>We collaborate with educational institutions and government bodies to develop policies and curricula that reflect current best practices and future needs. Our curriculum development process is learner-centered, competency-based, and aligned with national and international standards.</p>
+          
+          <h3>Education Monitoring, Evaluation & Impact Assessment</h3>
+          <p>We provide robust monitoring and evaluation frameworks that help institutions assess the effectiveness of their educational programs. Our impact assessment methodologies measure both quantitative outcomes and qualitative changes, providing a comprehensive view of program success.</p>
+        </div>
+      `
+    },
+    'skills-training': {
+      title: 'Education & Skills Training',
+      content: `
+        <div class="modal-service-content">
+          <h2>Education & Skills Training</h2>
+          <div class="modal-service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1262251920-612x612-s3tZ7X7GsHbCXIw3oIYHs973cLCxvg.jpg" alt="Education and Skills Training" class="w-full h-full object-cover">
+          </div>
+          <p>Mono Education offers a wide range of training programs designed to equip learners with the knowledge and skills needed to thrive in the 21st century. Our training solutions are practical, engaging, and tailored to meet the specific needs of different learner groups.</p>
+          
+          <h3>Education & Training Programs</h3>
+          <p>We develop and deliver comprehensive training programs in areas such as Digital Literacy, Artificial Intelligence, and 21st-Century Skills. Our programs combine theoretical knowledge with practical applications, ensuring that learners can apply their skills in real-world contexts.</p>
+          
+          <h3>TVET & Workforce Development</h3>
+          <p>We specialize in Technical and Vocational Education and Training (TVET) that bridges the gap between education and employment. Our workforce development programs are designed in collaboration with industry partners to ensure relevance and employability.</p>
+          
+          <h3>STEM & Innovation Programs</h3>
+          <p>We promote Science, Technology, Engineering, and Mathematics (STEM) education through innovative programs that foster critical thinking, problem-solving, and creativity. Our STEM programs incorporate hands-on activities, project-based learning, and real-world applications.</p>
+        </div>
+      `
+    },
+    'consulting': {
+      title: 'Consulting & Institutional Development',
+      content: `
+        <div class="modal-service-content">
+          <h2>Consulting & Institutional Development</h2>
+          <div class="modal-service-image">
+            <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-638059282-612x612-enj09rb2mxGDEKV85iB6Gkz6WVmQdU.jpg" alt="Consulting and Institutional Development" class="w-full h-full object-cover">
+          </div>
+          <p>Mono Education provides expert consulting services to help educational institutions enhance their capacity, improve their operations, and achieve their strategic goals. Our consultants bring a wealth of experience and knowledge to address complex educational challenges.</p>
+          
+          <h3>Educational Consulting & Institutional Development</h3>
+          <p>We offer strategic guidance on institutional development, organizational restructuring, and quality assurance. Our consulting services are tailored to the unique context and needs of each institution, ensuring sustainable and impactful results.</p>
+          
+          <h3>Sustainable Development & Education for SDGs</h3>
+          <p>We help educational institutions integrate Sustainable Development Goals (SDGs) into their curricula, operations, and strategic plans. Our approach emphasizes the role of education in promoting sustainable development, environmental stewardship, and global citizenship.</p>
+        </div>
+      `
+    },
+    'publishing': {
+      title: 'Publishing & Grant Writing Services',
+      content: `
+        <div class="modal-service-content">
+          <h2>Publishing & Grant Writing Services</h2>
+          <div class="modal-service-image">
+            <img src="/placeholder.svg?height=250&width=800" alt="Publishing and Grant Writing Services" class="w-full h-full object-cover">
+          </div>
+          <p>Mono Education supports academic and educational institutions in disseminating knowledge and securing funding through our publishing and grant writing services. Our team of experienced writers and editors ensures high-quality publications and compelling grant proposals.</p>
+          
+          <h3>Publication Services</h3>
+          <p>We assist in the preparation, editing, and publication of academic journals, books, policy briefs, and other educational materials. Our publication services include content development, peer review coordination, formatting, and distribution strategies.</p>
+          
+          <h3>Scholarship & Grant Writing Services</h3>
+          <p>We help educational institutions and researchers secure funding by developing persuasive grant proposals and scholarship applications. Our grant writing services include opportunity identification, proposal development, budget preparation, and submission support.</p>
+        </div>
+      `
+    },
+    'conferences': {
+      title: 'Conferences & Global Partnerships',
+      content: `
+        <div class="modal-service-content">
+          <h2>Conferences & Global Partnerships</h2>
+          <div class="modal-service-image">
+            <img src="/placeholder.svg?height=250&width=800" alt="Conferences and Global Partnerships" class="w-full h-full object-cover">
+          </div>
+          <p>Mono Education facilitates knowledge exchange and collaboration through conferences and global partnerships. We bring together educators, researchers, policymakers, and industry leaders to address educational challenges and explore innovative solutions.</p>
+          
+          <h3>Conference Planning & Hosting</h3>
+          <p>We organize and host educational conferences, workshops, and seminars that provide platforms for sharing research findings, best practices, and innovative ideas. Our conference services include program development, speaker coordination, logistics management, and post-event documentation.</p>
+          
+          <h3>Educational Partnerships & International Collaboration</h3>
+          <p>We facilitate partnerships between educational institutions, government agencies, and private organizations to promote collaboration and resource sharing. Our international collaboration initiatives connect institutions across borders, fostering global perspectives and cross-cultural understanding in education.</p>
+        </div>
+      `
+    }
+  };
+  
+  // Open modal with service details
+  serviceButtons.forEach(button => {
+    button.addEventListener("click", function() {
+      const serviceType = this.getAttribute("data-service");
+      const serviceDetail = serviceDetails[serviceType];
+      
+      if (serviceDetail) {
+        modalBody.innerHTML = serviceDetail.content;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+      }
+    });
+  });
+  
+  // Close modal
+  if (closeModal) {
+    closeModal.addEventListener("click", function() {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto"; // Re-enable scrolling
+    });
+  }
+  
+  // Close modal when clicking outside
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto"; // Re-enable scrolling
+    }
+  });
+  
+  // Scroll animation using Intersection Observer
+  const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        // Once the animation is triggered, we don't need to observe this element anymore
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null, // viewport
+    threshold: 0.1, // 10% of the item visible
+    rootMargin: '0px 0px -50px 0px' // trigger a bit before the element enters the viewport
+  });
+  
+  animateOnScrollElements.forEach(element => {
+    observer.observe(element);
+  });
+});
+</script>
+</body>
+</html>
