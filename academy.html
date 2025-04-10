@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academy - Mono Education</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Base styles and reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Header and Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(42, 57, 144, 0.15);
+}
+
+.logo a {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2a3990; /* Mono Education blue */
+  letter-spacing: -0.5px;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.nav-link {
+  font-weight: 600;
+  color: #4b5563;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #2a3990; /* Mono Education blue */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2a3990;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.mobile-menu-btn button {
+  padding: 0.5rem;
+  color: #2a3990; /* Mono Education blue */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2a3990; /* Mono Education blue */
+  cursor: pointer;
+}
+
+.mobile-menu-content {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.mobile-nav-link:hover {
+  color: #2a3990;
+  border-bottom: 1px solid #2a3990;
+}
+
+/* Academy Hero Section */
+.academy-hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  margin-top: 60px; /* Space for fixed navbar */
+  overflow: hidden;
+}
+
+.academy-hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+}
+
+.academy-hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.academy-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+}
+
+.academy-hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.academy-hero-cta {
+  margin-top: 2rem;
+}
+
+.hero-button {
+  display: inline-block;
+  background-color: white;
+  color: #2a3990;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Course Categories Section */
+.course-categories {
+  padding: 5rem 2rem;
+  background-color: #f8fafc;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.category-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.category-card:hover .category-image img {
+  transform: scale(1.05);
+}
+
+.category-header {
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  color: white;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.category-subtitle {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.category-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.objectives-title, .outline-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2a3990;
+  margin-bottom: 1rem;
+}
+
+.objectives-list, .outline-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.objectives-list li, .outline-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #4b5563;
+}
+
+.objectives-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #2a3990;
+}
+
+.outline-list li {
+  counter-increment: outline-counter;
+  padding-left: 2rem;
+}
+
+.outline-list li::before {
+  content: counter(outline-counter);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba(42, 57, 144, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2a3990;
+}
+
+.category-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+  text-align: center;
+}
+
+.learn-more-button {
+  display: inline-block;
+  background-color: #2a3990;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 0.875rem;
+}
+
+.learn-more-button:hover {
+  background-color: #1a1f4e;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(42, 57, 144, 0.2);
+}
+
+/* Call to Action Section */
+.cta-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  color: white;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.cta-text {
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cta-button-primary {
+  display: inline-block;
+  background-color: white;
+  color: #2a3990;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.cta-button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Impacts Section */
+.impacts-section {
+  padding: 5rem 2rem;
+  background-color: white;
+}
+
+.impacts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .impacts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .impacts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.impact-card {
+  background-color: #f8fafc;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.impact-year {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #2a3990;
+  color: white;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+}
+
+.impact-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(42, 57, 144, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #2a3990;
+}
+
+.impact-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.impact-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.impact-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.impact-location svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 5rem 2rem;
+  background-color: #f8fafc;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonial-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+  position: relative;
+  padding-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #2a3990;
+  opacity: 0.2;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.testimonial-text {
+  color: #4b5563;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-info {
+  flex-grow: 1;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.testimonial-role {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 0.25rem;
+  color: #f59e0b;
+}
+
+/* Footer */
+.footer {
+  background-color: #1e293b;
+  color: white;
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footer-top {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.footer-about {
+  color: #cbd5e1;
+  line-height: 1.7;
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #2a3990;
+  transform: translateY(-3px);
+}
+
+.social-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  color: #cbd5e1;
+  transition: all 0.2s;
+}
+
+.footer-link:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+.footer-contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #2a3990;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+/* Scroll Animation Styles */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+</style>
+</head>
+<body>
+<!-- Fixed Navigation Bar -->
+<header class="header">
+<nav class="navbar">
+  <div class="logo">
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+    <a href="/">Mono Education</a>
+  </div>
+  
+  <div class="desktop-nav">
+    <a href="/about-us" class="nav-link">ABOUT US</a>
+    <a href="/services" class="nav-link">OUR SERVICES</a>
+    <a href="/academy" class="nav-link active">ACADEMY</a>
+    <a href="/join-team" class="nav-link">JOIN OUR TEAM</a>
+    <a href="/blogs" class="nav-link">BLOG</a>
+    <a href="/contact" class="nav-link">CONTACT US</a>
+  </div>
+  
+  <div class="mobile-menu-btn">
+    <button id="menu-toggle">
+      <span class="menu-icon">☰</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="logo">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+      <a href="/">Mono Education</a>
+    </div>
+    <button id="close-menu">✕</button>
+  </div>
+  <div class="mobile-menu-content">
+    <a href="/about-us" class="mobile-nav-link">ABOUT US</a>
+    <a href="/services" class="mobile-nav-link">OUR SERVICES</a>
+    <a href="/academy" class="mobile-nav-link">ACADEMY</a>
+    <a href="/join-team" class="mobile-nav-link">JOIN OUR TEAM</a>
+    <a href="/blogs" class="mobile-nav-link">BLOG</a>
+    <a href="/contact" class="mobile-nav-link">CONTACT US</a>
+  </div>
+</div>
+</header>
+
+<div class="container">
+<!-- Academy Hero Section -->
+<section class="academy-hero">
+  <div class="academy-hero-pattern"></div>
+  <div class="academy-hero-content animate-on-scroll">
+    <h1 class="academy-hero-title"> Academy</h1>
+    <p class="academy-hero-subtitle">Empowering educators and learners with cutting-edge courses in research, technology, and educational innovation</p>
+    <div class="academy-hero-cta">
+      <a href="#courses" class="hero-button">Explore Courses</a>
+    </div>
+  </div>
+</section>
+
+<!-- Course Categories Section -->
+<section class="course-categories" id="courses">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <h2 class="section-title">Our Course Categories</h2>
+      <p class="section-subtitle">Explore our diverse range of specialized courses designed to meet the needs of modern education professionals</p>
+    </div>
+    
+    <div class="categories-grid">
+      <!-- Category 1: Research & Academic Writing -->
+      <div class="category-card animate-on-scroll delay-100">
+        <div class="category-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2885%29-oGKpymTs0mmfiVD5qNROJLMeAXhDKC.jpeg?height=200&width=400" alt="Research & Academic Writing">
+        </div>
+        <div class="category-header">
+          <h3 class="category-title">Research & Academic Writing</h3>
+          <p class="category-subtitle">Master the art of academic research and writing</p>
+        </div>
+        <div class="category-content">
+          <h4 class="course-title">Research Methodology & Proposal Writing</h4>
+          
+          <h5 class="objectives-title">Learning Objectives:</h5>
+          <ul class="objectives-list">
+            <li>Understand qualitative, quantitative, and mixed research methods.</li>
+            <li>Learn how to formulate a strong research problem and hypothesis.</li>
+            <li>Develop skills in writing a compelling research proposal.</li>
+          </ul>
+          
+          <h5 class="outline-title">Course Outline:</h5>
+          <ol class="outline-list">
+            <li>Introduction to Research Methods</li>
+            <li>Designing Research Questions & Hypotheses</li>
+            <li>Qualitative vs. Quantitative Approaches</li>
+            <li>Data Collection & Sampling Techniques</li>
+            <li>Writing a Winning Research Proposal</li>
+            <li>Ethical Considerations in Research</li>
+          </ol>
+        </div>
+        <div class="category-footer">
+          <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+      
+      <!-- Category 2: Grant Writing & Higher Education Development -->
+      <div class="category-card animate-on-scroll delay-200">
+        <div class="category-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2888%29-HQ0NYhzQiN7OHVhB2KUygUjYW5dgkN.jpeg?height=200&width=400" alt="Grant Writing & Higher Education">
+        </div>
+        <div class="category-header">
+          <h3 class="category-title">Grant Writing & Higher Education</h3>
+          <p class="category-subtitle">Secure funding and develop educational institutions</p>
+        </div>
+        <div class="category-content">
+          <h4 class="course-title">Research Grant Writing & Funding Strategies</h4>
+          
+          <h5 class="objectives-title">Learning Objectives:</h5>
+          <ul class="objectives-list">
+            <li>Identify grant funding sources.</li>
+            <li>Understand the key elements of a successful grant proposal.</li>
+            <li>Learn budgeting and financial planning for research grants.</li>
+          </ul>
+          
+          <h5 class="outline-title">Course Outline:</h5>
+          <ol class="outline-list">
+            <li>Overview of Research Funding Landscape</li>
+            <li>Identifying Suitable Grant Opportunities</li>
+            <li>Writing the Grant Proposal (Statement of Need, Methodology, Budgeting)</li>
+            <li>Developing a Strong Research Impact Statement</li>
+            <li>Submission Process & Proposal Evaluation</li>
+            <li>Post-Award Management & Reporting</li>
+          </ol>
+        </div>
+        <div class="category-footer">
+          <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+      
+      <!-- Category 3: AI, Data Science & Emerging Technologies -->
+      <div class="category-card animate-on-scroll delay-300">
+        <div class="category-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2890%29-WTB7T1vXiaZRRXUmYfiE7sC1NzzmH6.jpeg?height=200&width=400" alt="AI & Data Science in Education">
+        </div>
+        <div class="category-header">
+          <h3 class="category-title">AI & Data Science in Education</h3>
+          <p class="category-subtitle">Harness the power of AI for educational innovation</p>
+        </div>
+        <div class="category-content">
+          <h4 class="course-title">AI in Education & Personalized Learning</h4>
+          
+          <h5 class="objectives-title">Learning Objectives:</h5>
+          <ul class="objectives-list">
+            <li>Understand the role of AI in modern education.</li>
+            <li>Learn how AI can personalize learning experiences.</li>
+            <li>Explore case studies of AI-powered education tools.</li>
+          </ul>
+          
+          <h5 class="outline-title">Course Outline:</h5>
+          <ol class="outline-list">
+            <li>Introduction to AI in Education</li>
+            <li>Machine Learning & Personalized Learning</li>
+            <li>AI-Powered Tutoring Systems</li>
+            <li>Ethical Considerations in AI for Education</li>
+            <li>AI-Driven Learning Analytics</li>
+            <li>Future Trends & Challenges</li>
+          </ol>
+        </div>
+        <div class="category-footer">
+          <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+      
+      <!-- Category 4: Digital & Online Learning Innovations -->
+      <div class="category-card animate-on-scroll delay-400">
+        <div class="category-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1262251920-612x612-s3tZ7X7GsHbCXIw3oIYHs973cLCxvg.jpg?height=200&width=400" alt="Digital & Online Learning">
+        </div>
+        <div class="category-header">
+          <h3 class="category-title">Digital & Online Learning</h3>
+          <p class="category-subtitle">Create engaging digital learning experiences</p>
+        </div>
+        <div class="category-content">
+          <h4 class="course-title">E-Learning Course Development</h4>
+          
+          <h5 class="objectives-title">Learning Objectives:</h5>
+          <ul class="objectives-list">
+            <li>Design an engaging e-learning curriculum.</li>
+            <li>Learn best practices in instructional design.</li>
+            <li>Understand e-learning platforms and tools.</li>
+          </ul>
+          
+          <h5 class="outline-title">Course Outline:</h5>
+          <ol class="outline-list">
+            <li>Introduction to E-Learning Technologies</li>
+            <li>Instructional Design Principles</li>
+            <li>Content Creation & Multimedia Integration</li>
+            <li>Learning Management Systems (LMS) Overview</li>
+            <li>Assessment & Student Engagement Strategies</li>
+            <li>Evaluating & Improving E-Learning Programs</li>
+          </ol>
+        </div>
+        <div class="category-footer">
+          <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+      
+      <!-- Category 5: STEM & Technical Education -->
+      <div class="category-card animate-on-scroll delay-500">
+        <div class="category-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2891%29-o1DHI6QSFhayC0AR6R1NCv7JxzXXbP.jpeg?height=200&width=400" alt="STEM & Technical Education">
+        </div>
+        <div class="category-header">
+          <h3 class="category-title">STEM & Technical Education</h3>
+          <p class="category-subtitle">Advance STEM teaching with cutting-edge approaches</p>
+        </div>
+        <div class="category-content">
+          <h4 class="course-title">AI & Robotics in STEM Education</h4>
+          
+          <h5 class="objectives-title">Learning Objectives:</h5>
+          <ul class="objectives-list">
+            <li>Understand AI and robotics applications in STEM education.</li>
+            <li>Learn how to integrate coding and robotics into lesson plans.</li>
+            <li>Develop hands-on STEM activities using AI tools.</li>
+          </ul>
+          
+          <h5 class="outline-title">Course Outline:</h5>
+          <ol class="outline-list">
+            <li>Fundamentals of AI & Robotics</li>
+            <li>Teaching Coding & Computational Thinking</li>
+            <li>Robotics in STEM Learning (Hands-on Activities)</li>
+            <li>AI-Driven Experiments & Simulations</li>
+            <li>Project-Based Learning with AI & Robotics</li>
+            <li>Assessing Learning Outcomes in AI-Powered STEM</li>
+          </ol>
+        </div>
+        <div class="category-footer">
+          <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+      
+      <!-- Category 6: Social Impact & Global Education Trends -->
+      <div class="category-card animate-on-scroll delay-600">
+        <div class="category-image">
+          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2892%29-lnqBSULcFFAJVM9uZx7Xed27OSmDbL.jpeg?height=200&width=400" alt="Social Impact & Global Education">
+        </div>
+        <div class="category-header">
+          <h3 class="category-title">Social Impact & Global Education</h3>
+          <p class="category-subtitle">Shape education policy and drive social change</p>
+        </div>
+        <div class="category-content">
+          <h4 class="course-title">Education Policy & Advocacy</h4>
+          
+          <h5 class="objectives-title">Learning Objectives:</h5>
+          <ul class="objectives-list">
+            <li>Understand the fundamentals of education policy development.</li>
+            <li>Learn strategies for advocating educational reforms.</li>
+            <li>Explore global case studies on education policy changes.</li>
+          </ul>
+          
+          <h5 class="outline-title">Course Outline:</h5>
+          <ol class="outline-list">
+            <li>Introduction to Education Policy & Reforms</li>
+            <li>Global Trends & Comparative Education Policies</li>
+            <li>Policy Advocacy & Stakeholder Engagement</li>
+            <li>Designing Evidence-Based Policy Recommendations</li>
+            <li>The Role of NGOs & International Organizations in Education Policy</li>
+            <li>Impact Measurement & Policy Evaluation</li>
+          </ol>
+        </div>
+        <div class="category-footer">
+          <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+  <div class="cta-content animate-on-scroll">
+    <h2 class="cta-title">Ready to Advance Your Educational Career?</h2>
+    <p class="cta-text">Join our academy today and gain access to world-class courses, expert instructors, and a global community of education professionals.</p>
+    <div class="cta-buttons">
+      <a href="#" class="cta-button-primary">Apply Now</a>
+      <a href="#" class="cta-button-secondary">Request Information</a>
+    </div>
+  </div>
+</section>
+
+<!-- Impacts Section -->
+<section class="impacts-section">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <h2 class="section-title">Our Impact</h2>
+      <p class="section-subtitle">Discover how our training programs have transformed education across communities</p>
+    </div>
+    
+    <div class="impacts-grid">
+      <!-- Impact 1 -->
+      <div class="impact-card animate-on-scroll delay-100">
+        <div class="impact-year">2019</div>
+        <div class="impact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <h3 class="impact-title">Computer Application Packages Training for Badirisa Youths</h3>
+        <div class="impact-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Badirisa, Adamawa State</span>
+        </div>
+      </div>
+      
+      <!-- Impact 2 -->
+      <div class="impact-card animate-on-scroll delay-200">
+        <div class="impact-year">2020</div>
+        <div class="impact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3 class="impact-title">Training of Teachers on Child-Centered Approach to Learning</h3>
+        <div class="impact-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Adamawa State</span>
+        </div>
+      </div>
+      
+      <!-- Impact 3 -->
+      <div class="impact-card animate-on-scroll delay-300">
+        <div class="impact-year">2020</div>
+        <div class="impact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h3 class="impact-title">Training of Students on Leadership and Skill Development</h3>
+        <div class="impact-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Adamawa State University, Mubi</span>
+        </div>
+      </div>
+      
+      <!-- Impact 4 -->
+      <div class="impact-card animate-on-scroll delay-400">
+        <div class="impact-year">2021</div>
+        <div class="impact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <h3 class="impact-title">Training of Classroom Teachers on Methods of Teaching and Management</h3>
+        <div class="impact-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Jesus Kids College, Uba, Borno State</span>
+        </div>
+      </div>
+      
+      <!-- Impact 5 -->
+      <div class="impact-card animate-on-scroll delay-500">
+        <div class="impact-year">2022</div>
+        <div class="impact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h3 class="impact-title">Training of Students on Leadership and Skill Development</h3>
+        <div class="impact-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Adamawa State University, Mubi</span>
+        </div>
+      </div>
+      
+      <!-- Impact 6 -->
+      <div class="impact-card animate-on-scroll delay-600">
+        <div class="impact-year">2023</div>
+        <div class="impact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <h3 class="impact-title">Training of Teachers on Developing Reading Skills in Pupils</h3>
+        <div class="impact-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Jesus Kids College, Uba, Borno State</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="testimonials-container">
+    <div class="section-header animate-on-scroll">
+      <h2 class="section-title">What Our Students Say</h2>
+      <p class="section-subtitle">Hear from our graduates about their experience with Mono Education Academy</p>
+    </div>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll delay-100">
+        <div class="testimonial-content">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The Research Methodology course transformed my approach to academic writing. The instructors were knowledgeable and supportive throughout the entire program.</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="/placeholder.svg?height=48&width=48" alt="Dr. James Wilson">
+          </div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Dr. James Wilson</div>
+            <div class="testimonial-role">University Professor</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card animate-on-scroll delay-200">
+        <div class="testimonial-content">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The AI in Education course provided practical insights that I've been able to implement in my classroom immediately. My students are more engaged than ever!</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="/placeholder.svg?height=48&width=48" alt="Sarah Johnson">
+          </div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Sarah Johnson</div>
+            <div class="testimonial-role">High School Teacher</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card animate-on-scroll delay-300">
+        <div class="testimonial-content">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Thanks to the Grant Writing course, our school secured a major research grant that has transformed our science department. The return on investment was incredible!</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="/placeholder.svg?height=48&width=48" alt="Michael Chen">
+          </div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Michael Chen</div>
+            <div class="testimonial-role">School Administrator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <!-- Company Info -->
+      <div class="footer-company">
+        <div class="footer-logo">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+          <span class="footer-logo-text">Mono Education</span>
+        </div>
+        <p class="footer-about">
+          Leading provider of educational consulting services, committed to helping students and educators achieve their full potential.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Quick Links -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">Quick Links</h3>
+        <div class="footer-links">
+          <a href="/" class="footer-link">Home</a>
+          <a href="/about-us" class="footer-link">About Us</a>
+          <a href="/services" class="footer-link">Our Services</a>
+          <a href="/academy" class="footer-link">Academy</a>
+          <a href="/join-team" class="footer-link">Join Our Team</a>
+          <a href="/blogs" class="footer-link">Blog</a>
+          <a href="/contact" class="footer-link">Contact Us</a>
+        </div>
+      </div>
+      
+      <!-- Services -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">Services</h3>
+        <div class="footer-links">
+          <a href="/services/digital-learning" class="footer-link">Digital Learning Solutions</a>
+          <a href="/services/research-policy" class="footer-link">Research & Policy Development</a>
+          <a href="/services/education-skills" class="footer-link">Education & Skills Training</a>
+          <a href="/services/consulting" class="footer-link">Consulting & Institutional Development</a>
+        </div>
+      </div>
+      
+      <!-- Contact -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">Contact Us</h3>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Mono Education, Office No.2, Sanitation Street, 
+  Bajabure Federal Housing Estate, Adamawa State, Nigeria.</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>info@monoeducation.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>+234 802 875 060</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Mono Education Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile menu functionality
+  const menuToggle = document.getElementById("menu-toggle");
+  const closeMenu = document.getElementById("close-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+  });
+
+  // Scroll animation using Intersection Observer
+  const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        // Once the animation is triggered, we don't need to observe this element anymore
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null, // viewport
+    threshold: 0.1, // 10% of the item visible
+    rootMargin: '0px 0px -50px 0px' // trigger a bit before the element enters the viewport
+  });
+
+  animateOnScrollElements.forEach(element => {
+    observer.observe(element);
+  });
+});
+</script>
+</body>
+</html>
