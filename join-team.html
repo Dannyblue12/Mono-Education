@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Our Team - Mono Education</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Base styles and reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Header and Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(42, 57, 144, 0.15);
+}
+
+.logo a {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2a3990; /* Mono Education blue */
+  letter-spacing: -0.5px;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.nav-link {
+  font-weight: 600;
+  color: #4b5563;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #2a3990; /* Mono Education blue */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2a3990;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.mobile-menu-btn button {
+  padding: 0.5rem;
+  color: #2a3990; /* Mono Education blue */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2a3990; /* Mono Education blue */
+  cursor: pointer;
+}
+
+.mobile-menu-content {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.mobile-nav-link:hover {
+  color: #2a3990;
+  border-bottom: 1px solid #2a3990;
+}
+
+/* Join Team Hero Section */
+.join-hero {
+  position: relative;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  margin-top: 60px; /* Space for fixed navbar */
+  overflow: hidden;
+}
+
+.join-hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+}
+
+.join-hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.join-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+}
+
+.join-hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.join-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: white;
+  color: #2a3990;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Why Join Section */
+.why-join-section {
+  padding: 5rem 2rem;
+  background-color: white;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefit-card {
+  background-color: #f8fafc;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(42, 57, 144, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #2a3990;
+}
+
+.benefit-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.benefit-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-description {
+  color: #64748b;
+  line-height: 1.7;
+  flex-grow: 1;
+}
+
+/* Roles Section */
+.roles-section {
+  padding: 5rem 2rem;
+  background-color: #f8fafc;
+}
+
+.roles-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.role-tab {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  border-radius: 2rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid #e5e7eb;
+}
+
+.role-tab.active, .role-tab:hover {
+  background-color: #2a3990;
+  color: white;
+  border-color: #2a3990;
+}
+
+.roles-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.role-panel {
+  display: none;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.role-panel.active {
+  display: block;
+}
+
+.role-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.role-description {
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.role-requirements {
+  margin-bottom: 1.5rem;
+}
+
+.role-requirements-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.requirements-list {
+  list-style: none;
+}
+
+.requirements-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #4b5563;
+}
+
+.requirements-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #2a3990;
+}
+
+.role-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Application Form Section */
+.application-section {
+  padding: 5rem 2rem;
+  background-color: white;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f8fafc;
+  border-radius: 1rem;
+  padding: 3rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.form-subtitle {
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1e293b;
+  transition: all 0.3s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #2a3990;
+  box-shadow: 0 0 0 3px rgba(42, 57, 144, 0.1);
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
+}
+
+.form-checkbox-label {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.form-submit {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #2a3990;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form-submit:hover {
+  background-color: #1a1f4e;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 5rem 2rem;
+  background-color: #f8fafc;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonial-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-content {
+  position: relative;
+  padding-top: 2rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.testimonial-quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #2a3990;
+  opacity: 0.2;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.testimonial-text {
+  color: #4b5563;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-info {
+  flex-grow: 1;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.testimonial-role {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 5rem 2rem;
+  background-color: white;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  margin-top: 3rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.faq-question {
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.faq-question h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.faq-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a3990;
+  transition: all 0.3s;
+}
+
+.faq-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer-content {
+  padding: 0 0 1.5rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 1000px;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
+  color: white;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.cta-text {
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Footer */
+.footer {
+  background-color: #1e293b;
+  color: white;
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footer-top {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.footer-about {
+  color: #cbd5e1;
+  line-height: 1.7;
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #2a3990;
+  transform: translateY(-3px);
+}
+
+.social-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  color: #cbd5e1;
+  transition: all 0.2s;
+}
+
+.footer-link:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+.footer-contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #2a3990;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+/* Scroll Animation Styles */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+</style>
+</head>
+<body>
+<!-- Fixed Navigation Bar -->
+<header class="header">
+<nav class="navbar">
+  <div class="logo">
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+    <a href="/">Mono Education</a>
+  </div>
+  
+  <div class="desktop-nav">
+    <a href="/about-us.html" class="nav-link">ABOUT US</a>
+    <a href="/services.html" class="nav-link">OUR SERVICES</a>
+    <a href="/academy.html" class="nav-link">ACADEMY</a>
+    <a href="/join-team" class="nav-link active">JOIN OUR TEAM</a>
+    <a href="/blogs.html" class="nav-link">BLOG</a>
+    <a href="/contact.html" class="nav-link">CONTACT US</a>
+  </div>
+  
+  <div class="mobile-menu-btn">
+    <button id="menu-toggle">
+      <span class="menu-icon">☰</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="logo">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+      <a href="/">Mono Education</a>
+    </div>
+    <button id="close-menu">✕</button>
+  </div>
+  <div class="mobile-menu-content">
+    <a href="/about-us.html" class="mobile-nav-link">ABOUT US</a>
+    <a href="/services.html" class="mobile-nav-link">OUR SERVICES</a>
+    <a href="/academy.html" class="mobile-nav-link">ACADEMY</a>
+    <a href="/join-team" class="mobile-nav-link">JOIN OUR TEAM</a>
+    <a href="/blogs.html" class="mobile-nav-link">BLOG</a>
+    <a href="/contact.html" class="mobile-nav-link">CONTACT US</a>
+  </div>
+</div>
+</header>
+
+<div class="container">
+  <!-- Join Team Hero Section -->
+  <section class="join-hero">
+    <div class="join-hero-pattern"></div>
+    <div class="join-hero-content animate-on-scroll">
+      <h1 class="join-hero-title">Join Our Team</h1>
+      <p class="join-hero-subtitle">Be part of a passionate team dedicated to transforming education and creating positive impact across communities</p>
+      <div class="join-hero-buttons">
+        <a href="#application" class="btn-primary">Apply Now</a>
+        <a href="#roles" class="btn-secondary">Explore Roles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Join Section -->
+  <section class="why-join-section">
+    <div class="section-container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Why Join Mono Education?</h2>
+        <p class="section-subtitle">Discover the benefits of being part of our innovative educational team</p>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card animate-on-scroll delay-100">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3 class="benefit-title">Meaningful Impact</h3>
+          <p class="benefit-description">
+            Make a real difference in education by contributing to projects that transform learning experiences and create positive change in communities.
+          </p>
+        </div>
+        
+        <div class="benefit-card animate-on-scroll delay-200">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            </svg>
+          </div>
+          <h3 class="benefit-title">Collaborative Environment</h3>
+          <p class="benefit-description">
+            Work alongside passionate professionals from diverse backgrounds, sharing knowledge and collaborating on innovative educational solutions.
+          </p>
+        </div>
+        
+        <div class="benefit-card animate-on-scroll delay-300">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="benefit-title">Professional Growth</h3>
+          <p class="benefit-description">
+            Develop your skills through continuous learning opportunities, mentorship programs, and exposure to cutting-edge educational practices.
+          </p>
+        </div>
+        
+        <div class="benefit-card animate-on-scroll delay-400">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+            </svg>
+          </div>
+          <h3 class="benefit-title">Flexible Work Arrangements</h3>
+          <p class="benefit-description">
+            Enjoy flexible working options that respect work-life balance, including remote work possibilities and adaptable schedules.
+          </p>
+        </div>
+        
+        <div class="benefit-card animate-on-scroll delay-500">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="benefit-title">Diverse Opportunities</h3>
+          <p class="benefit-description">
+            Explore various roles across educational consulting, curriculum development, research, technology integration, and project management.
+          </p>
+        </div>
+        
+        <div class="benefit-card animate-on-scroll delay-600">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="benefit-title">Global Reach</h3>
+          <p class="benefit-description">
+            Contribute to projects with international impact, working with partners and communities across different regions and cultures.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roles Section -->
+  <section class="roles-section" id="roles">
+    <div class="section-container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Explore Our Roles</h2>
+        <p class="section-subtitle">Discover the different ways you can contribute to our mission</p>
+      </div>
+      
+      <div class="roles-tabs animate-on-scroll">
+        <div class="role-tab active" data-role="educator">Educational Consultant</div>
+        <div class="role-tab" data-role="researcher">Researcher</div>
+        <div class="role-tab" data-role="curriculum">Curriculum Developer</div>
+        <div class="role-tab" data-role="technology">EdTech Specialist</div>
+        <div class="role-tab" data-role="project">Project Manager</div>
+      </div>
+      
+      <div class="roles-content">
+        <!-- Educational Consultant Panel -->
+        <div class="role-panel active" id="educator-panel">
+          <h3 class="role-title">Educational Consultant</h3>
+          <p class="role-description">
+            As an Educational Consultant at Mono Education, you'll work directly with educational institutions to assess needs, develop strategies, and implement solutions that enhance teaching and learning outcomes.
+          </p>
+          
+          <div class="role-requirements">
+            <h4 class="role-requirements-title">Key Requirements:</h4>
+            <ul class="requirements-list">
+              <li>Advanced degree in Education, Teaching, or related field</li>
+              <li>Minimum 3-5 years of experience in educational settings</li>
+              <li>Strong understanding of pedagogical approaches and educational best practices</li>
+              <li>Excellent communication and presentation skills</li>
+              <li>Experience in developing and delivering teacher training programs</li>
+              <li>Ability to analyze educational data and provide actionable insights</li>
+            </ul>
+          </div>
+          
+          <div class="role-cta">
+            <a href="#application" class="btn-primary">Apply for This Role</a>
+          </div>
+        </div>
+        
+        <!-- Researcher Panel -->
+        <div class="role-panel" id="researcher-panel">
+          <h3 class="role-title">Educational Researcher</h3>
+          <p class="role-description">
+            As an Educational Researcher, you'll conduct studies, analyze data, and produce reports that inform educational policy and practice, contributing to evidence-based decision-making in education.
+          </p>
+          
+          <div class="role-requirements">
+            <h4 class="role-requirements-title">Key Requirements:</h4>
+            <ul class="requirements-list">
+              <li>PhD or Master's degree in Education, Social Sciences, or related field</li>
+              <li>Experience with qualitative and quantitative research methodologies</li>
+              <li>Strong analytical skills and proficiency in research tools and software</li>
+              <li>Publication record in academic or professional journals (preferred)</li>
+              <li>Experience in grant writing and research proposal development</li>
+              <li>Excellent academic writing and presentation skills</li>
+            </ul>
+          </div>
+          
+          <div class="role-cta">
+            <a href="#application" class="btn-primary">Apply for This Role</a>
+          </div>
+        </div>
+        
+        <!-- Curriculum Developer Panel -->
+        <div class="role-panel" id="curriculum-panel">
+          <h3 class="role-title">Curriculum Developer</h3>
+          <p class="role-description">
+            As a Curriculum Developer, you'll design, develop, and evaluate educational content and learning materials that are engaging, effective, and aligned with educational standards and objectives.
+          </p>
+          
+          <div class="role-requirements">
+            <h4 class="role-requirements-title">Key Requirements:</h4>
+            <ul class="requirements-list">
+              <li>Degree in Education, Instructional Design, or related field</li>
+              <li>Experience in curriculum development and instructional design</li>
+              <li>Knowledge of learning theories and instructional methodologies</li>
+              <li>Familiarity with educational standards and assessment frameworks</li>
+              <li>Strong content creation and writing skills</li>
+              <li>Experience with multimedia and digital learning resources</li>
+            </ul>
+          </div>
+          
+          <div class="role-cta">
+            <a href="#application" class="btn-primary">Apply for This Role</a>
+          </div>
+        </div>
+        
+        <!-- EdTech Specialist Panel -->
+        <div class="role-panel" id="technology-panel">
+          <h3 class="role-title">EdTech Specialist</h3>
+          <p class="role-description">
+            As an EdTech Specialist, you'll evaluate, implement, and support educational technology solutions that enhance teaching and learning experiences, bridging the gap between pedagogy and technology.
+          </p>
+          
+          <div class="role-requirements">
+            <h4 class="role-requirements-title">Key Requirements:</h4>
+            <ul class="requirements-list">
+              <li>Degree in Educational Technology, Computer Science, or related field</li>
+              <li>Experience with learning management systems and educational software</li>
+              <li>Understanding of how technology can enhance pedagogical approaches</li>
+              <li>Knowledge of emerging technologies in education</li>
+              <li>Strong technical skills and ability to train others in technology use</li>
+              <li>Experience in digital content creation and multimedia development</li>
+            </ul>
+          </div>
+          
+          <div class="role-cta">
+            <a href="#application" class="btn-primary">Apply for This Role</a>
+          </div>
+        </div>
+        
+        <!-- Project Manager Panel -->
+        <div class="role-panel" id="project-panel">
+          <h3 class="role-title">Education Project Manager</h3>
+          <p class="role-description">
+            As an Education Project Manager, you'll plan, execute, and oversee educational initiatives and programs, ensuring they meet objectives, timelines, and quality standards while managing resources effectively.
+          </p>
+          
+          <div class="role-requirements">
+            <h4 class="role-requirements-title">Key Requirements:</h4>
+            <ul class="requirements-list">
+              <li>Degree in Education, Business Administration, or related field</li>
+              <li>Project management certification (PMP, PRINCE2, or equivalent)</li>
+              <li>Experience managing educational or development projects</li>
+              <li>Strong organizational and leadership skills</li>
+              <li>Excellent stakeholder management and communication abilities</li>
+              <li>Experience with project management methodologies and tools</li>
+            </ul>
+          </div>
+          
+          <div class="role-cta">
+            <a href="#application" class="btn-primary">Apply for This Role</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form Section -->
+  <section class="application-section" id="application">
+    <div class="section-container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Apply to Join Our Team</h2>
+        <p class="section-subtitle">Take the first step towards a rewarding career in educational innovation</p>
+      </div>
+      
+      <div class="form-container animate-on-scroll">
+        <h3 class="form-title">Application Form</h3>
+        <p class="form-subtitle">Please fill out the form below to apply for a position at Mono Education</p>
+        
+        <form id="application-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name" class="form-label">First Name *</label>
+              <input type="text" id="first-name" name="first-name" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="last-name" class="form-label">Last Name *</label>
+              <input type="text" id="last-name" name="last-name" class="form-input" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-input">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="role" class="form-label">Position You're Applying For *</label>
+            <select id="role" name="role" class="form-select" required>
+              <option value="">Select a position</option>
+              <option value="educational-consultant">Educational Consultant</option>
+              <option value="researcher">Educational Researcher</option>
+              <option value="curriculum-developer">Curriculum Developer</option>
+              <option value="edtech-specialist">EdTech Specialist</option>
+              <option value="project-manager">Education Project Manager</option>
+              <option value="other">Other (Please specify)</option>
+            </select>
+          </div>
+          
+          <div class="form-group" id="other-role-group" style="display: none;">
+            <label for="other-role" class="form-label">Please Specify Role</label>
+            <input type="text" id="other-role" name="other-role" class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <label for="application-type" class="form-label">Application Type *</label>
+            <select id="application-type" name="application-type" class="form-select" required>
+              <option value="">Select application type</option>
+              <option value="full-time">Full-time Team Member</option>
+              <option value="part-time">Part-time Team Member</option>
+              <option value="consultant">Expert Consultant</option>
+              <option value="volunteer">Volunteer</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="experience" class="form-label">Years of Relevant Experience *</label>
+            <select id="experience" name="experience" class="form-select" required>
+              <option value="">Select experience level</option>
+              <option value="0-2">0-2 years</option>
+              <option value="3-5">3-5 years</option>
+              <option value="6-10">6-10 years</option>
+              <option value="10+">10+ years</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="resume" class="form-label">Upload Resume/CV *</label>
+            <input type="file" id="resume" name="resume" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cover-letter" class="form-label">Cover Letter / Statement of Interest *</label>
+            <textarea id="cover-letter" name="cover-letter" class="form-textarea" required></textarea>
+          </div>
+          
+          <div class="form-checkbox-group">
+            <input type="checkbox" id="terms" name="terms" class="form-checkbox" required>
+            <label for="terms" class="form-checkbox-label">I agree to the processing of my personal data in accordance with Mono Education's privacy policy.</label>
+          </div>
+          
+          <button type="submit" class="form-submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Meet Our Team Members</h2>
+        <p class="section-subtitle">Hear from the professionals who are part of our educational mission</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll delay-100">
+          <div class="testimonial-content">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">Working at Mono Education has been incredibly rewarding. I've had the opportunity to contribute to meaningful projects that directly impact educational outcomes while growing professionally in a supportive environment.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="/placeholder.svg?height=48&width=48" alt="Dr. Sarah Johnson">
+            </div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Dr. Sarah Johnson</div>
+              <div class="testimonial-role">Senior Educational Consultant</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card animate-on-scroll delay-200">
+          <div class="testimonial-content">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">The collaborative culture at Mono Education is what sets it apart. I've been able to work with experts from diverse backgrounds, which has enriched my perspective and approach to curriculum development.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="/placeholder.svg?height=48&width=48" alt="Michael Chen">
+            </div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Michael Chen</div>
+              <div class="testimonial-role">Curriculum Development Lead</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card animate-on-scroll delay-300">
+          <div class="testimonial-content">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">Joining Mono Education as an expert consultant has allowed me to share my specialized knowledge while maintaining flexibility in my career. The projects are challenging and the impact is tangible.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="/placeholder.svg?height=48&width=48" alt="Dr. James Wilson">
+            </div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Dr. James Wilson</div>
+              <div class="testimonial-role">EdTech Expert Consultant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Find answers to common questions about joining our team</p>
+      </div>
+      
+      <div class="faq-list animate-on-scroll">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <h3>What's the difference between joining as a team member vs. an expert?</h3>
+            <div class="faq-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Team members are part of our core staff, working on multiple projects and initiatives with a more consistent schedule. Experts join us as consultants for specific projects or areas where they have specialized knowledge, often with more flexible arrangements and focused responsibilities.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer remote work opportunities?</h3>
+            <div class="faq-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Yes, we offer remote work options for many positions. Some roles may require occasional in-person meetings or on-site work depending on project needs, but we embrace flexible work arrangements and have team members working from various locations.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is the application and interview process like?</h3>
+            <div class="faq-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Our process typically includes: 1) Initial application review, 2) A preliminary screening call, 3) A more in-depth interview with the team you'd be working with, 4) A practical assessment related to your role, and 5) A final interview with leadership. The entire process usually takes 2-3 weeks.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What qualifications are you looking for in team members?</h3>
+            <div class="faq-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              While specific qualifications vary by role, we generally look for relevant educational background, experience in education or related fields, strong communication skills, adaptability, and a passion for educational innovation. Most importantly, we value individuals who align with our mission and bring diverse perspectives to our team.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer professional development opportunities?</h3>
+            <div class="faq-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Yes, we're committed to the growth of our team members. We provide various professional development opportunities including workshops, conference attendance, mentorship programs, and support for relevant certifications or advanced degrees. We believe in investing in our team's continuous learning.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content animate-on-scroll">
+      <h2 class="cta-title">Ready to Make an Impact in Education?</h2>
+      <p class="cta-text">Join our team of passionate professionals dedicated to transforming educational experiences and creating positive change.</p>
+      <div class="cta-buttons">
+        <a href="#application" class="btn-primary">Apply Now</a>
+        <a href="#roles" class="btn-secondary">Explore Roles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <!-- Company Info -->
+        <div class="footer-company">
+          <div class="footer-logo">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
+            <span class="footer-logo-text">Mono Education</span>
+          </div>
+          <p class="footer-about">
+            Leading provider of educational consulting services, committed to helping students and educators achieve their full potential.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-links-column">
+          <h3 class="footer-title">Quick Links</h3>
+          <div class="footer-links">
+            <a href="/" class="footer-link">Home</a>
+            <a href="/about-us" class="footer-link">About Us</a>
+            <a href="/services" class="footer-link">Our Services</a>
+            <a href="/academy" class="footer-link">Academy</a>
+            <a href="/join-team" class="footer-link">Join Our Team</a>
+            <a href="/blogs" class="footer-link">Blog</a>
+            <a href="/contact" class="footer-link">Contact Us</a>
+          </div>
+        </div>
+        
+        <!-- Services -->
+        <div class="footer-links-column">
+          <h3 class="footer-title">Services</h3>
+          <div class="footer-links">
+            <a href="/services/digital-learning" class="footer-link">Digital Learning Solutions</a>
+            <a href="/services/research-policy" class="footer-link">Research & Policy Development</a>
+            <a href="/services/education-skills" class="footer-link">Education & Skills Training</a>
+            <a href="/services/consulting" class="footer-link">Consulting & Institutional Development</a>
+          </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-links-column">
+          <h3 class="footer-title">Contact Us</h3>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Mono Education, Office No.2, Sanitation Street, Bajabure Federal Housing Estate, Adamawa State, Nigeria.</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@monoeducation.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>+234 802 875 060</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Mono Education Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile menu functionality
+  const menuToggle = document.getElementById("menu-toggle");
+  const closeMenu = document.getElementById("close-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+  });
+
+  // Scroll animation using Intersection Observer
+  const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        // Once the animation is triggered, we don't need to observe this element anymore
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null, // viewport
+    threshold: 0.1, // 10% of the item visible
+    rootMargin: '0px 0px -50px 0px' // trigger a bit before the element enters the viewport
+  });
+  
+  animateOnScrollElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  // Role tabs functionality
+  const roleTabs = document.querySelectorAll('.role-tab');
+  
+  roleTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      roleTabs.forEach(t => t.classList.remove('active'));
+      // Add active class to clicked tab
+      tab.classList.add('active');
+      
+      // Hide all panels
+      document.querySelectorAll('.role-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      
+      // Show the corresponding panel
+      const role = tab.getAttribute('data-role');
+      document.getElementById(`${role}-panel`).classList.add('active');
+    });
+  });
+
+  // FAQ accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+      // Toggle active class on the clicked item
+      item.classList.toggle('active');
+    });
+  });
+
+  // Show/hide "other role" field based on selection
+  const roleSelect = document.getElementById('role');
+  const otherRoleGroup = document.getElementById('other-role-group');
+  
+  roleSelect.addEventListener('change', () => {
+    if (roleSelect.value === 'other') {
+      otherRoleGroup.style.display = 'block';
+    } else {
+      otherRoleGroup.style.display = 'none';
+    }
+  });
+});
+</script>
+</body>
+</html>

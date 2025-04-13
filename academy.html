@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Academy - Mono Education</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap">
 <style>
 /* Base styles and reset */
 * {
@@ -18,7 +18,7 @@ body {
     "Helvetica Neue", sans-serif;
   color: #333;
   line-height: 1.6;
-  background-color: #f8f9fa;
+  background-color: #f8fafc;
 }
 
 a {
@@ -216,14 +216,14 @@ a {
   position: relative;
   z-index: 1;
   color: white;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
 .academy-hero-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 800;
   margin-bottom: 1.25rem;
   line-height: 1.2;
@@ -232,19 +232,23 @@ a {
 }
 
 .academy-hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* Reduced from 1.25rem */
   font-weight: 400;
-  max-width: 600px;
+  max-width: 700px;
   line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2rem;
 }
 
-.academy-hero-cta {
-  margin-top: 2rem;
+.academy-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.hero-button {
+.btn-primary {
   display: inline-block;
   background-color: white;
   color: #2a3990;
@@ -252,19 +256,35 @@ a {
   padding: 0.875rem 2rem;
   border-radius: 0.5rem;
   transition: all 0.3s;
-  font-size: 1rem;
+  font-size: 0.9rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.hero-button:hover {
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Course Categories Section */
-.course-categories {
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Academy Overview Section */
+.overview-section {
   padding: 5rem 2rem;
-  background-color: #f8fafc;
+  background-color: white;
 }
 
 .section-container {
@@ -274,130 +294,268 @@ a {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #1e293b;
   margin-bottom: 1rem;
   line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #2a3990;
+  border-radius: 2px;
 }
 
 .section-subtitle {
-  font-size: 1.125rem;
+  font-size: 1rem; /* Reduced from 1.125rem */
   color: #64748b;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 1.5rem auto 0;
 }
 
-.categories-grid {
+.overview-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
+  align-items: center;
 }
 
-@media (min-width: 768px) {
-  .categories-grid {
+@media (min-width: 1024px) {
+  .overview-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.overview-image {
+  position: relative;
+  height: 400px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.overview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.overview-title {
+
+  font-size: 1.75rem; /* Reduced from 2rem */
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.overview-description {
+  color: #64748b;
+  font-size: 1rem; /* Reduced from 1.125rem */
+  line-height: 1.8;
+}
+
+.overview-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .overview-points {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1280px) {
-  .categories-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.category-card {
-  background-color: white;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s;
+.overview-point {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.category-image {
-  height: 200px;
-  overflow: hidden;
-}
-
-.category-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
-
-.category-card:hover .category-image img {
-  transform: scale(1.05);
-}
-
-.category-header {
-  background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
-  color: white;
-  padding: 1.5rem;
-  position: relative;
-}
-
-.category-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.category-subtitle {
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
-.category-content {
-  padding: 1.5rem;
-  flex-grow: 1;
+.overview-point-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  background-color: rgba(42, 57, 144, 0.1);
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-}
-
-.course-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.objectives-title, .outline-title {
-  font-size: 1rem;
-  font-weight: 700;
+  align-items: center;
+  justify-content: center;
   color: #2a3990;
-  margin-bottom: 1rem;
 }
 
-.objectives-list, .outline-list {
-  list-style: none;
-  margin-bottom: 1.5rem;
+.overview-point-icon svg {
+  width: 0.75rem;
+  height: 0.75rem;
 }
 
-.objectives-list li, .outline-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
+.overview-point-text {
+  font-weight: 500;
   color: #4b5563;
 }
 
-.objectives-list li::before {
+/* Course Tabs */
+.course-tabs-section {
+  padding: 3rem 2rem;
+  background-color: #f8fafc;
+}
+
+.course-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.course-tab {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  border-radius: 2rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .course-tab {
+    width: 100%;
+  }
+}
+
+.course-tab.active, .course-tab:hover {
+  background-color: #2a3990;
+  color: white;
+  border-color: #2a3990;
+}
+
+/* Course Section */
+.course-section {
+  padding: 5rem 2rem;
+  background-color: #f8fafc;
+}
+
+.course-section:nth-child(even) {
+  background-color: white;
+}
+
+.course-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .course-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.course-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.course-category {
+  color: #2a3990;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.course-title {
+  
+  font-size: 2.1rem; /* Reduced from 2.5rem */
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.course-certification {
+  font-size: 1.1rem; /* Reduced from 1.25rem */
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.course-image {
+  position: relative;
+  height: 450px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  order: -1;
+}
+
+@media (min-width: 1024px) {
+  .course-image {
+    order: 0;
+  }
+
+  .course-section:nth-child(odd) .course-container .course-image {
+    order: 1;
+  }
+}
+
+.course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.module-item {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.module-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem; /* Reduced from 1rem */
+  margin-bottom: 0.25rem;
+  position: relative;
+}
+
+.module-title::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: -2rem;
   top: 0.5rem;
   width: 0.5rem;
   height: 0.5rem;
@@ -405,73 +563,69 @@ a {
   background-color: #2a3990;
 }
 
-.outline-list li {
-  counter-increment: outline-counter;
-  padding-left: 2rem;
+.module-description {
+  color: #64748b;
+  font-size: 0.85rem; /* Reduced from 0.95rem */
 }
 
-.outline-list li::before {
-  content: counter(outline-counter);
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: rgba(42, 57, 144, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #2a3990;
+.course-action {
+  margin-top: 2rem;
 }
 
-.category-footer {
-  padding: 1.5rem;
-  border-top: 1px solid #f1f5f9;
-  text-align: center;
-}
-
-.learn-more-button {
+.course-btn {
   display: inline-block;
   background-color: #2a3990;
   color: white;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   border-radius: 0.5rem;
   transition: all 0.3s;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
 }
 
-.learn-more-button:hover {
+.course-btn:hover {
   background-color: #1a1f4e;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(42, 57, 144, 0.2);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Call to Action Section */
+/* CTA Section */
 .cta-section {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #2a3990 0%, #1a1f4e 100%);
   color: white;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
 }
 
 .cta-content {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-title {
-  font-size: 2.5rem;
-  font-weight: 800;
+  
+  font-size: 2.2rem; /* Reduced from 2.5rem */
+  font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .cta-text {
-  font-size: 1.125rem;
+  font-size: 1rem; /* Reduced from 1.125rem */
   margin-bottom: 2.5rem;
   max-width: 600px;
   margin-left: auto;
@@ -485,133 +639,10 @@ a {
   justify-content: center;
 }
 
-.cta-button-primary {
-  display: inline-block;
-  background-color: white;
-  color: #2a3990;
-  font-weight: 600;
-  padding: 0.875rem 2rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-  font-size: 1rem;
-}
-
-.cta-button-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.cta-button-secondary {
-  display: inline-block;
-  background-color: transparent;
-  color: white;
-  font-weight: 600;
-  padding: 0.875rem 2rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-  font-size: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.cta-button-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
-}
-
-/* Impacts Section */
-.impacts-section {
-  padding: 5rem 2rem;
-  background-color: white;
-}
-
-.impacts-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-@media (min-width: 768px) {
-  .impacts-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .impacts-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.impact-card {
-  background-color: #f8fafc;
-  border-radius: 1rem;
-  padding: 2rem;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.impact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-.impact-year {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: #2a3990;
-  color: white;
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-}
-
-.impact-icon {
-  width: 3rem;
-  height: 3rem;
-  background-color: rgba(42, 57, 144, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: #2a3990;
-}
-
-.impact-icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.impact-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.impact-location {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #64748b;
-  font-size: 0.875rem;
-  margin-top: 1rem;
-}
-
-.impact-location svg {
-  width: 1rem;
-  height: 1rem;
-}
-
 /* Testimonials Section */
 .testimonials-section {
   padding: 5rem 2rem;
-  background-color: #f8fafc;
+  background-color: white;
 }
 
 .testimonials-container {
@@ -639,22 +670,26 @@ a {
 }
 
 .testimonial-card {
-  background-color: white;
+  background-color: #f8fafc;
   border-radius: 1rem;
   padding: 2rem;
   transition: all 0.3s;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .testimonial-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-content {
   position: relative;
   padding-top: 2rem;
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .testimonial-quote {
@@ -703,12 +738,6 @@ a {
 .testimonial-role {
   font-size: 0.875rem;
   color: #64748b;
-}
-
-.testimonial-rating {
-  display: flex;
-  gap: 0.25rem;
-  color: #f59e0b;
 }
 
 /* Footer */
@@ -851,7 +880,6 @@ a {
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
-.delay-600 { transition-delay: 0.6s; }
 </style>
 </head>
 <body>
@@ -862,16 +890,16 @@ a {
     <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250303-WA0043.jpg-iIDPTQjfu8R7dWLEco8E40tOYVPM8V.jpeg" alt="Mono Education Logo">
     <a href="/">Mono Education</a>
   </div>
-  
+
   <div class="desktop-nav">
-    <a href="/about-us" class="nav-link">ABOUT US</a>
-    <a href="/services" class="nav-link">OUR SERVICES</a>
-    <a href="/academy" class="nav-link active">ACADEMY</a>
-    <a href="/join-team" class="nav-link">JOIN OUR TEAM</a>
-    <a href="/blogs" class="nav-link">BLOG</a>
-    <a href="/contact" class="nav-link">CONTACT US</a>
+    <a href="/about-us.html" class="nav-link">ABOUT US</a>
+    <a href="/services.html" class="nav-link">OUR SERVICES</a>
+    <a href="/academy.html" class="nav-link active">ACADEMY</a>
+    <a href="/join-team.html" class="nav-link">JOIN OUR TEAM</a>
+    <a href="/blogs.html" class="nav-link">BLOG</a>
+    <a href="/contact.html" class="nav-link">CONTACT US</a>
   </div>
-  
+
   <div class="mobile-menu-btn">
     <button id="menu-toggle">
       <span class="menu-icon">☰</span>
@@ -889,12 +917,12 @@ a {
     <button id="close-menu">✕</button>
   </div>
   <div class="mobile-menu-content">
-    <a href="/about-us" class="mobile-nav-link">ABOUT US</a>
-    <a href="/services" class="mobile-nav-link">OUR SERVICES</a>
-    <a href="/academy" class="mobile-nav-link">ACADEMY</a>
-    <a href="/join-team" class="mobile-nav-link">JOIN OUR TEAM</a>
-    <a href="/blogs" class="mobile-nav-link">BLOG</a>
-    <a href="/contact" class="mobile-nav-link">CONTACT US</a>
+    <a href="/about-us.html" class="mobile-nav-link">ABOUT US</a>
+    <a href="/services.html" class="mobile-nav-link">OUR SERVICES</a>
+    <a href="/academy.html" class="mobile-nav-link">ACADEMY</a>
+    <a href="/join-team.html" class="mobile-nav-link">JOIN OUR TEAM</a>
+    <a href="/blogs.html" class="mobile-nav-link">BLOG</a>
+    <a href="/contact.html" class="mobile-nav-link">CONTACT US</a>
   </div>
 </div>
 </header>
@@ -905,366 +933,457 @@ a {
   <div class="academy-hero-pattern"></div>
   <div class="academy-hero-content animate-on-scroll">
     <h1 class="academy-hero-title"> Academy</h1>
-    <p class="academy-hero-subtitle">Empowering educators and learners with cutting-edge courses in research, technology, and educational innovation</p>
-    <div class="academy-hero-cta">
-      <a href="#courses" class="hero-button">Explore Courses</a>
+    <p class="academy-hero-subtitle">Advance your career with specialized courses in research, education policy, AI, and digital transformation.</p>
+    <div class="academy-hero-buttons">
+      <a href="#courses" class="btn-primary">Explore Courses</a>
+      <a href="#contact" class="btn-secondary">Contact Us</a>
     </div>
   </div>
 </section>
 
-<!-- Course Categories Section -->
-<section class="course-categories" id="courses">
+<!-- Academy Overview Section -->
+<section class="overview-section">
   <div class="section-container">
     <div class="section-header animate-on-scroll">
-      <h2 class="section-title">Our Course Categories</h2>
-      <p class="section-subtitle">Explore our diverse range of specialized courses designed to meet the needs of modern education professionals</p>
+      <h2 class="section-title">Welcome to Our Academy</h2>
+      <p class="section-subtitle">Industry-leading courses designed to develop expertise in education, research, and technology.</p>
     </div>
     
-    <div class="categories-grid">
-      <!-- Category 1: Research & Academic Writing -->
-      <div class="category-card animate-on-scroll delay-100">
-        <div class="category-image">
-          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2885%29-oGKpymTs0mmfiVD5qNROJLMeAXhDKC.jpeg?height=200&width=400" alt="Research & Academic Writing">
-        </div>
-        <div class="category-header">
-          <h3 class="category-title">Research & Academic Writing</h3>
-          <p class="category-subtitle">Master the art of academic research and writing</p>
-        </div>
-        <div class="category-content">
-          <h4 class="course-title">Research Methodology & Proposal Writing</h4>
-          
-          <h5 class="objectives-title">Learning Objectives:</h5>
-          <ul class="objectives-list">
-            <li>Understand qualitative, quantitative, and mixed research methods.</li>
-            <li>Learn how to formulate a strong research problem and hypothesis.</li>
-            <li>Develop skills in writing a compelling research proposal.</li>
-          </ul>
-          
-          <h5 class="outline-title">Course Outline:</h5>
-          <ol class="outline-list">
-            <li>Introduction to Research Methods</li>
-            <li>Designing Research Questions & Hypotheses</li>
-            <li>Qualitative vs. Quantitative Approaches</li>
-            <li>Data Collection & Sampling Techniques</li>
-            <li>Writing a Winning Research Proposal</li>
-            <li>Ethical Considerations in Research</li>
-          </ol>
-        </div>
-        <div class="category-footer">
-          <a href="#" class="learn-more-button">Learn More</a>
-        </div>
+    <div class="overview-grid">
+      <div class="overview-image animate-on-scroll">
+        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1440718884-612x612-GqxAbLq0BjhPtz9QNQubVWbvSJM4Vl.jpg?height=400&width=600" alt="Mono Education Academy">
       </div>
-      
-      <!-- Category 2: Grant Writing & Higher Education Development -->
-      <div class="category-card animate-on-scroll delay-200">
-        <div class="category-image">
-          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2888%29-HQ0NYhzQiN7OHVhB2KUygUjYW5dgkN.jpeg?height=200&width=400" alt="Grant Writing & Higher Education">
-        </div>
-        <div class="category-header">
-          <h3 class="category-title">Grant Writing & Higher Education</h3>
-          <p class="category-subtitle">Secure funding and develop educational institutions</p>
-        </div>
-        <div class="category-content">
-          <h4 class="course-title">Research Grant Writing & Funding Strategies</h4>
-          
-          <h5 class="objectives-title">Learning Objectives:</h5>
-          <ul class="objectives-list">
-            <li>Identify grant funding sources.</li>
-            <li>Understand the key elements of a successful grant proposal.</li>
-            <li>Learn budgeting and financial planning for research grants.</li>
-          </ul>
-          
-          <h5 class="outline-title">Course Outline:</h5>
-          <ol class="outline-list">
-            <li>Overview of Research Funding Landscape</li>
-            <li>Identifying Suitable Grant Opportunities</li>
-            <li>Writing the Grant Proposal (Statement of Need, Methodology, Budgeting)</li>
-            <li>Developing a Strong Research Impact Statement</li>
-            <li>Submission Process & Proposal Evaluation</li>
-            <li>Post-Award Management & Reporting</li>
-          </ol>
-        </div>
-        <div class="category-footer">
-          <a href="#" class="learn-more-button">Learn More</a>
-        </div>
-      </div>
-      
-      <!-- Category 3: AI, Data Science & Emerging Technologies -->
-      <div class="category-card animate-on-scroll delay-300">
-        <div class="category-image">
-          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2890%29-WTB7T1vXiaZRRXUmYfiE7sC1NzzmH6.jpeg?height=200&width=400" alt="AI & Data Science in Education">
-        </div>
-        <div class="category-header">
-          <h3 class="category-title">AI & Data Science in Education</h3>
-          <p class="category-subtitle">Harness the power of AI for educational innovation</p>
-        </div>
-        <div class="category-content">
-          <h4 class="course-title">AI in Education & Personalized Learning</h4>
-          
-          <h5 class="objectives-title">Learning Objectives:</h5>
-          <ul class="objectives-list">
-            <li>Understand the role of AI in modern education.</li>
-            <li>Learn how AI can personalize learning experiences.</li>
-            <li>Explore case studies of AI-powered education tools.</li>
-          </ul>
-          
-          <h5 class="outline-title">Course Outline:</h5>
-          <ol class="outline-list">
-            <li>Introduction to AI in Education</li>
-            <li>Machine Learning & Personalized Learning</li>
-            <li>AI-Powered Tutoring Systems</li>
-            <li>Ethical Considerations in AI for Education</li>
-            <li>AI-Driven Learning Analytics</li>
-            <li>Future Trends & Challenges</li>
-          </ol>
-        </div>
-        <div class="category-footer">
-          <a href="#" class="learn-more-button">Learn More</a>
-        </div>
-      </div>
-      
-      <!-- Category 4: Digital & Online Learning Innovations -->
-      <div class="category-card animate-on-scroll delay-400">
-        <div class="category-image">
-          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1262251920-612x612-s3tZ7X7GsHbCXIw3oIYHs973cLCxvg.jpg?height=200&width=400" alt="Digital & Online Learning">
-        </div>
-        <div class="category-header">
-          <h3 class="category-title">Digital & Online Learning</h3>
-          <p class="category-subtitle">Create engaging digital learning experiences</p>
-        </div>
-        <div class="category-content">
-          <h4 class="course-title">E-Learning Course Development</h4>
-          
-          <h5 class="objectives-title">Learning Objectives:</h5>
-          <ul class="objectives-list">
-            <li>Design an engaging e-learning curriculum.</li>
-            <li>Learn best practices in instructional design.</li>
-            <li>Understand e-learning platforms and tools.</li>
-          </ul>
-          
-          <h5 class="outline-title">Course Outline:</h5>
-          <ol class="outline-list">
-            <li>Introduction to E-Learning Technologies</li>
-            <li>Instructional Design Principles</li>
-            <li>Content Creation & Multimedia Integration</li>
-            <li>Learning Management Systems (LMS) Overview</li>
-            <li>Assessment & Student Engagement Strategies</li>
-            <li>Evaluating & Improving E-Learning Programs</li>
-          </ol>
-        </div>
-        <div class="category-footer">
-          <a href="#" class="learn-more-button">Learn More</a>
-        </div>
-      </div>
-      
-      <!-- Category 5: STEM & Technical Education -->
-      <div class="category-card animate-on-scroll delay-500">
-        <div class="category-image">
-          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2891%29-o1DHI6QSFhayC0AR6R1NCv7JxzXXbP.jpeg?height=200&width=400" alt="STEM & Technical Education">
-        </div>
-        <div class="category-header">
-          <h3 class="category-title">STEM & Technical Education</h3>
-          <p class="category-subtitle">Advance STEM teaching with cutting-edge approaches</p>
-        </div>
-        <div class="category-content">
-          <h4 class="course-title">AI & Robotics in STEM Education</h4>
-          
-          <h5 class="objectives-title">Learning Objectives:</h5>
-          <ul class="objectives-list">
-            <li>Understand AI and robotics applications in STEM education.</li>
-            <li>Learn how to integrate coding and robotics into lesson plans.</li>
-            <li>Develop hands-on STEM activities using AI tools.</li>
-          </ul>
-          
-          <h5 class="outline-title">Course Outline:</h5>
-          <ol class="outline-list">
-            <li>Fundamentals of AI & Robotics</li>
-            <li>Teaching Coding & Computational Thinking</li>
-            <li>Robotics in STEM Learning (Hands-on Activities)</li>
-            <li>AI-Driven Experiments & Simulations</li>
-            <li>Project-Based Learning with AI & Robotics</li>
-            <li>Assessing Learning Outcomes in AI-Powered STEM</li>
-          </ol>
-        </div>
-        <div class="category-footer">
-          <a href="#" class="learn-more-button">Learn More</a>
-        </div>
-      </div>
-      
-      <!-- Category 6: Social Impact & Global Education Trends -->
-      <div class="category-card animate-on-scroll delay-600">
-        <div class="category-image">
-          <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2892%29-lnqBSULcFFAJVM9uZx7Xed27OSmDbL.jpeg?height=200&width=400" alt="Social Impact & Global Education">
-        </div>
-        <div class="category-header">
-          <h3 class="category-title">Social Impact & Global Education</h3>
-          <p class="category-subtitle">Shape education policy and drive social change</p>
-        </div>
-        <div class="category-content">
-          <h4 class="course-title">Education Policy & Advocacy</h4>
-          
-          <h5 class="objectives-title">Learning Objectives:</h5>
-          <ul class="objectives-list">
-            <li>Understand the fundamentals of education policy development.</li>
-            <li>Learn strategies for advocating educational reforms.</li>
-            <li>Explore global case studies on education policy changes.</li>
-          </ul>
-          
-          <h5 class="outline-title">Course Outline:</h5>
-          <ol class="outline-list">
-            <li>Introduction to Education Policy & Reforms</li>
-            <li>Global Trends & Comparative Education Policies</li>
-            <li>Policy Advocacy & Stakeholder Engagement</li>
-            <li>Designing Evidence-Based Policy Recommendations</li>
-            <li>The Role of NGOs & International Organizations in Education Policy</li>
-            <li>Impact Measurement & Policy Evaluation</li>
-          </ol>
-        </div>
-        <div class="category-footer">
-          <a href="#" class="learn-more-button">Learn More</a>
+      <div class="overview-content animate-on-scroll delay-200">
+        <h3 class="overview-title">Expert-Led Certifications</h3>
+        <p class="overview-description">
+          Our certification programs are designed by industry experts and academics to equip you with cutting-edge knowledge and practical skills for immediate application in your professional environment.
+        </p>
+        <div class="overview-points">
+          <div class="overview-point">
+            <div class="overview-point-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <p class="overview-point-text">Expert-led instruction</p>
+          </div>
+          <div class="overview-point">
+            <div class="overview-point-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <p class="overview-point-text">Professional certification</p>
+          </div>
+          <div class="overview-point">
+            <div class="overview-point-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <p class="overview-point-text">Flexible learning options</p>
+          </div>
+          <div class="overview-point">
+            <div class="overview-point-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <p class="overview-point-text">Industry-relevant curriculum</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="cta-section">
+<!-- Course Tabs -->
+<section class="course-tabs-section" id="courses">
+  <div class="course-tabs animate-on-scroll">
+    <a href="#research" class="course-tab active">Research & Academic Excellence</a>
+    <a href="#policy" class="course-tab">Education Policy</a>
+    <a href="#ai-analytics" class="course-tab">AI & Learning Analytics</a>
+    <a href="#digital-skills" class="course-tab">Digital Research Skills</a>
+    <a href="#digital-leadership" class="course-tab">Digital Leadership</a>
+    <a href="#ai-governance" class="course-tab">AI Governance</a>
+    <a href="#ai-teaching" class="course-tab">AI in Teaching</a>
+    <a href="#ai-research" class="course-tab">AI & Research Innovation</a>
+  </div>
+</section>
+
+<!-- Course 1: Advanced Research & Academic Excellence -->
+<section class="course-section" id="research">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 1</p>
+      <h2 class="course-title">Advanced Research & Academic Excellence</h2>
+      <p class="course-certification">Certification: Certified Research & Academic Writing Specialist</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Research Fundamentals</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: Systematic Literature Review</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Data Collection & Analysis</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: Academic Writing & Publishing</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: Research Grant Writing</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: Open Science & Research Impact</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2885%29-oGKpymTs0mmfiVD5qNROJLMeAXhDKC.jpeg?height=450&width=600" alt="Research & Academic Excellence">
+    </div>
+  </div>
+</section>
+
+<!-- Course 2: Education Policy & Digital Transformation -->
+<section class="course-section" id="policy">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 2</p>
+      <h2 class="course-title">Education Policy & Digital Transformation</h2>
+      <p class="course-certification">Certification: Education Policy & Digital Innovation Leader</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Education Policy Development</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: SDGs & Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Digital Inclusion & Equity</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: Higher Education Accreditation</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: Educational Partnerships</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: Impact Measurement & Evaluation</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/group-young-people-sitting-conference-together-3Xk7vjRa6HRD1NJiCghV5hg7n8wL0Q.jpg?height=450&width=600" alt="Education Policy & Digital Transformation">
+    </div>
+  </div>
+</section>
+
+<!-- Course 3: AI & Data-Driven Learning Analytics -->
+<section class="course-section" id="ai-analytics">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 3</p>
+      <h2 class="course-title">AI & Data-Driven Learning Analytics</h2>
+      <p class="course-certification">Certification: AI & Learning Analytics Specialist</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Introduction to AI in Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: Learning Analytics & Big Data</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Personalized Learning Systems</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: NLP in Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: AI for Assessment & Feedback</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: Virtual & Augmented Reality</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 7: AI & Digital Learning Ecosystems</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/images%20%2890%29-WTB7T1vXiaZRRXUmYfiE7sC1NzzmH6.jpeg?height=450&width=600" alt="AI & Data-Driven Learning Analytics">
+    </div>
+  </div>
+</section>
+
+<!-- Course 4: Digital Skills for Research & Innovation -->
+<section class="course-section" id="digital-skills">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 4</p>
+      <h2 class="course-title">Digital Skills for Research & Innovation</h2>
+      <p class="course-certification">Certification: Digital Research & Innovation Specialist</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Digital Research Tools & Productivity</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: Data Collection & Processing</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Data Visualization & Reporting</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: Open Science & Digital Publishing</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: AI & Automation in Research</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: Research Commercialization</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-638059282-612x612-enj09rb2mxGDEKV85iB6Gkz6WVmQdU.jpg?height=450&width=600" alt="Digital Skills for Research & Innovation">
+    </div>
+  </div>
+</section>
+
+<!-- Course 5: Digital Leadership & Innovation in Higher Education -->
+<section class="course-section" id="digital-leadership">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 5</p>
+      <h2 class="course-title">Digital Leadership in Higher Education</h2>
+      <p class="course-certification">Certification: Higher Education Digital Transformation Leader</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Digital Transformation Strategies</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: Leadership in Digital Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Smart Campuses & EdTech</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: Digital Skills & Workforce Readiness</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: Innovation in Higher Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: Policy & Governance in Digital Education</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/istockphoto-1262251920-612x612-s3tZ7X7GsHbCXIw3oIYHs973cLCxvg.jpg?height=450&width=600" alt="Digital Leadership in Higher Education">
+    </div>
+  </div>
+</section>
+
+<!-- Course 6: AI Governance & Policy in Education -->
+<section class="course-section" id="ai-governance">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 6</p>
+      <h2 class="course-title">AI Governance & Policy in Education</h2>
+      <p class="course-certification">Certification: AI Policy & Governance Leader in Education</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Foundations of AI Policy & Governance</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: AI Ethics & Responsible AI</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Regulation & Compliance in AI Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: AI for Inclusive & Equitable Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: AI & Academic Integrity</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: The Future of AI in Education Policy</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images%20(41)-wLpp7r7IFXPjFWzcv2IiWU3ZU7bhu1.jpeg?height=450&width=600" alt="AI Governance & Policy in Education">
+    </div>
+  </div>
+</section>
+
+<!-- Course 7: AI in Teaching & Learning -->
+<section class="course-section" id="ai-teaching">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 7</p>
+      <h2 class="course-title">AI in Teaching & Learning</h2>
+      <p class="course-certification">Certification: AI Educator & Learning Facilitator</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: Foundations of AI in Education</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: AI-Powered Teaching Strategies</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: Intelligent Tutoring Systems</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: AI for Student Engagement</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: AI in Classroom Management</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: AI for Inclusive Education</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/shallow-focus-shot-african-child-learning-school-Y9mS3n3NKWro522Ln28x0cm6DelVFx.jpg?height=450&width=600" alt="AI in Teaching & Learning">
+    </div>
+  </div>
+</section>
+
+<!-- Course 8: AI, Research & Innovation in Higher Education -->
+<section class="course-section" id="ai-research">
+  <div class="course-container">
+    <div class="course-content animate-on-scroll">
+      <p class="course-category">Course 8</p>
+      <h2 class="course-title">AI & Research Innovation in Higher Education</h2>
+      <p class="course-certification">Certification: AI & Research Innovation Leader</p>
+      
+      <div class="modules-list">
+        <div class="module-item">
+          <h3 class="module-title">Module 1: AI in Higher Education Research</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 2: AI in Research Data Management</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 3: AI & Innovation in Academic Publishing</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 4: AI in Grant Writing & Research Funding</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 5: AI for Research Collaboration</h3>
+        </div>
+        
+        <div class="module-item">
+          <h3 class="module-title">Module 6: Ethics in Academic Research AI</h3>
+        </div>
+      </div>
+      
+      <div class="course-action">
+        <a href="#contact" class="course-btn">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="course-image animate-on-scroll delay-100">
+      <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/young-student-learning-library-Z1Gy1wdFt9aBazcRHtpipChmYS4qML.jpg?height=450&width=600" alt="AI & Research Innovation in Higher Education">
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+  <div class="cta-pattern"></div>
   <div class="cta-content animate-on-scroll">
-    <h2 class="cta-title">Ready to Advance Your Educational Career?</h2>
-    <p class="cta-text">Join our academy today and gain access to world-class courses, expert instructors, and a global community of education professionals.</p>
+    <h2 class="cta-title">Ready to Advance Your Career?</h2>
+    <p class="cta-text">Gain the knowledge and skills needed to excel in education, research, and innovation.</p>
     <div class="cta-buttons">
-      <a href="#" class="cta-button-primary">Apply Now</a>
-      <a href="#" class="cta-button-secondary">Request Information</a>
-    </div>
-  </div>
-</section>
-
-<!-- Impacts Section -->
-<section class="impacts-section">
-  <div class="section-container">
-    <div class="section-header animate-on-scroll">
-      <h2 class="section-title">Our Impact</h2>
-      <p class="section-subtitle">Discover how our training programs have transformed education across communities</p>
-    </div>
-    
-    <div class="impacts-grid">
-      <!-- Impact 1 -->
-      <div class="impact-card animate-on-scroll delay-100">
-        <div class="impact-year">2019</div>
-        <div class="impact-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </div>
-        <h3 class="impact-title">Computer Application Packages Training for Badirisa Youths</h3>
-        <div class="impact-location">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Badirisa, Adamawa State</span>
-        </div>
-      </div>
-      
-      <!-- Impact 2 -->
-      <div class="impact-card animate-on-scroll delay-200">
-        <div class="impact-year">2020</div>
-        <div class="impact-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
-        <h3 class="impact-title">Training of Teachers on Child-Centered Approach to Learning</h3>
-        <div class="impact-location">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Adamawa State</span>
-        </div>
-      </div>
-      
-      <!-- Impact 3 -->
-      <div class="impact-card animate-on-scroll delay-300">
-        <div class="impact-year">2020</div>
-        <div class="impact-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-        <h3 class="impact-title">Training of Students on Leadership and Skill Development</h3>
-        <div class="impact-location">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Adamawa State University, Mubi</span>
-        </div>
-      </div>
-      
-      <!-- Impact 4 -->
-      <div class="impact-card animate-on-scroll delay-400">
-        <div class="impact-year">2021</div>
-        <div class="impact-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-          </svg>
-        </div>
-        <h3 class="impact-title">Training of Classroom Teachers on Methods of Teaching and Management</h3>
-        <div class="impact-location">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Jesus Kids College, Uba, Borno State</span>
-        </div>
-      </div>
-      
-      <!-- Impact 5 -->
-      <div class="impact-card animate-on-scroll delay-500">
-        <div class="impact-year">2022</div>
-        <div class="impact-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-        <h3 class="impact-title">Training of Students on Leadership and Skill Development</h3>
-        <div class="impact-location">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Adamawa State University, Mubi</span>
-        </div>
-      </div>
-      
-      <!-- Impact 6 -->
-      <div class="impact-card animate-on-scroll delay-600">
-        <div class="impact-year">2023</div>
-        <div class="impact-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-          </svg>
-        </div>
-        <h3 class="impact-title">Training of Teachers on Developing Reading Skills in Pupils</h3>
-        <div class="impact-location">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span>Jesus Kids College, Uba, Borno State</span>
-        </div>
-      </div>
+      <a href="/contact" class="btn-primary">Contact Us</a>
+      <a href="#courses" class="btn-secondary">Explore Courses</a>
     </div>
   </div>
 </section>
@@ -1273,23 +1392,23 @@ a {
 <section class="testimonials-section">
   <div class="testimonials-container">
     <div class="section-header animate-on-scroll">
-      <h2 class="section-title">What Our Students Say</h2>
-      <p class="section-subtitle">Hear from our graduates about their experience with Mono Education Academy</p>
+      <h2 class="section-title">Success Stories</h2>
+      <p class="section-subtitle">From professionals who have completed our certification programs</p>
     </div>
     
     <div class="testimonials-grid">
       <div class="testimonial-card animate-on-scroll delay-100">
         <div class="testimonial-content">
           <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">The Research Methodology course transformed my approach to academic writing. The instructors were knowledgeable and supportive throughout the entire program.</p>
+          <p class="testimonial-text">The Advanced Research program transformed my approach to research. The expert guidance helped me publish in top-tier journals and secure significant research funding.</p>
         </div>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
-            <img src="/placeholder.svg?height=48&width=48" alt="Dr. James Wilson">
+            <img src="/placeholder.svg?height=48&width=48" alt="Dr. Sarah Johnson">
           </div>
           <div class="testimonial-info">
-            <div class="testimonial-name">Dr. James Wilson</div>
-            <div class="testimonial-role">University Professor</div>
+            <div class="testimonial-name">Dr. Sarah Johnson</div>
+            <div class="testimonial-role">Research Professor, Lagos University</div>
           </div>
         </div>
       </div>
@@ -1297,15 +1416,15 @@ a {
       <div class="testimonial-card animate-on-scroll delay-200">
         <div class="testimonial-content">
           <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">The AI in Education course provided practical insights that I've been able to implement in my classroom immediately. My students are more engaged than ever!</p>
+          <p class="testimonial-text">As a university administrator, the Digital Leadership certification gave me the tools to lead our institution's digital transformation initiative. Highly recommended.</p>
         </div>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
-            <img src="/placeholder.svg?height=48&width=48" alt="Sarah Johnson">
+            <img src="/placeholder.svg?height=48&width=48" alt="Prof. Michael Chen">
           </div>
           <div class="testimonial-info">
-            <div class="testimonial-name">Sarah Johnson</div>
-            <div class="testimonial-role">High School Teacher</div>
+            <div class="testimonial-name">Prof. Michael Chen</div>
+            <div class="testimonial-role">Dean of Innovation, Adamawa State University</div>
           </div>
         </div>
       </div>
@@ -1313,15 +1432,15 @@ a {
       <div class="testimonial-card animate-on-scroll delay-300">
         <div class="testimonial-content">
           <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">Thanks to the Grant Writing course, our school secured a major research grant that has transformed our science department. The return on investment was incredible!</p>
+          <p class="testimonial-text">The AI & Learning Analytics program provided me with practical skills to implement AI solutions in my teaching practice. My students' engagement has significantly improved.</p>
         </div>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
-            <img src="/placeholder.svg?height=48&width=48" alt="Michael Chen">
+            <img src="/placeholder.svg?height=48&width=48" alt="Dr. Fatima Okeke">
           </div>
           <div class="testimonial-info">
-            <div class="testimonial-name">Michael Chen</div>
-            <div class="testimonial-role">School Administrator</div>
+            <div class="testimonial-name">Dr. Fatima Okeke</div>
+            <div class="testimonial-role">EdTech Specialist, Federal Polytechnic</div>
           </div>
         </div>
       </div>
@@ -1375,23 +1494,23 @@ a {
         <h3 class="footer-title">Quick Links</h3>
         <div class="footer-links">
           <a href="/" class="footer-link">Home</a>
-          <a href="/about-us" class="footer-link">About Us</a>
-          <a href="/services" class="footer-link">Our Services</a>
-          <a href="/academy" class="footer-link">Academy</a>
-          <a href="/join-team" class="footer-link">Join Our Team</a>
-          <a href="/blogs" class="footer-link">Blog</a>
-          <a href="/contact" class="footer-link">Contact Us</a>
+          <a href="/about-us.html" class="footer-link">About Us</a>
+          <a href="/services.html" class="footer-link">Our Services</a>
+          <a href="/academy.html" class="footer-link">Academy</a>
+          <a href="/join-team.html" class="footer-link">Join Our Team</a>
+          <a href="/blogs.html" class="footer-link">Blog</a>
+          <a href="/contact.html" class="footer-link">Contact Us</a>
         </div>
       </div>
       
-      <!-- Services -->
+      <!-- Courses -->
       <div class="footer-links-column">
-        <h3 class="footer-title">Services</h3>
+        <h3 class="footer-title">Our Courses</h3>
         <div class="footer-links">
-          <a href="/services/digital-learning" class="footer-link">Digital Learning Solutions</a>
-          <a href="/services/research-policy" class="footer-link">Research & Policy Development</a>
-          <a href="/services/education-skills" class="footer-link">Education & Skills Training</a>
-          <a href="/services/consulting" class="footer-link">Consulting & Institutional Development</a>
+          <a href="#research" class="footer-link">Research Excellence</a>
+          <a href="#policy" class="footer-link">Education Policy</a>
+          <a href="#ai-analytics" class="footer-link">AI & Learning Analytics</a>
+          <a href="#digital-leadership" class="footer-link">Digital Leadership</a>
         </div>
       </div>
       
@@ -1403,8 +1522,7 @@ a {
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          <span>Mono Education, Office No.2, Sanitation Street, 
-  Bajabure Federal Housing Estate, Adamawa State, Nigeria.</span>
+          <span>Mono Education, Office No.2, Sanitation Street, Bajabure Federal Housing Estate, Adamawa State, Nigeria.</span>
         </div>
         <div class="footer-contact-item">
           <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1463,6 +1581,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animateOnScrollElements.forEach(element => {
     observer.observe(element);
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 });
 </script>
